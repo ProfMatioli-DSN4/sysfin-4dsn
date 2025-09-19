@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SysFin</title>
-</head>
-<body>
+<?php require __DIR__ . '/../layout/header.php'; ?>
+<div class="d-flex justify-content-between align-items-center 
+ mb-4">
     <h1>SysFin - Sistema de Controle Financeiro</h1>
-</body>
-</html>
+    <a class="btn btn-primary" href="<?php echo BASE_URL; ?>/clientes">Novo</a>
+</div>
+<?php require __DIR__ . '/../layout/footer.php'; ?>

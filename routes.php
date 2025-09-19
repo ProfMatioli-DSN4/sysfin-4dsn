@@ -1,9 +1,9 @@
 <?php
 // Retorna uma função que define todas as rotas para o dispatcher
 return function (FastRoute\RouteCollector $r) {
-    $controller = 'App\Controllers\HomeController';
-    $r->addRoute('GET', '/', [$controller, 'index']);
+    //home;
+    $r->addRoute('GET', '/', ['App\Controllers\HomeController', 'index']);
     
-    $controller = 'App\Controllers\ClienteController';
-    $r->addRoute('GET', '/clientes', [$controller, 'index']);
+    //clientes;
+    $r->addRoute('GET', '/clientes', [ 'App\Controllers\ClienteController', 'index']);
 };
