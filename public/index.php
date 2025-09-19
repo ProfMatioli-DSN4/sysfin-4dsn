@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 // Carrega o autoloader do Composer
 require_once __DIR__ . '/../vendor/autoload.php';
 // Define a URL base para construir links
-define('BASE_URL', '/sysfin-dsn4');
+define('BASE_URL', '/sysfin-4dsn');
 // Cria o dispatcher do FastRoute, alimentando-o com nossas definições de rotas
 $dispatcher = FastRoute\simpleDispatcher(
     require __DIR__ . '/../routes.php'
