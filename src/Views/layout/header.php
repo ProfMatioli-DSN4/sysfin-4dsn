@@ -4,18 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão Escolar</title>
+    <title>SysFin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-info mb-4">
         <div class="container">
-        <a class="navbar-brand" href="<?php echo BASE_URL;?>/contas">Plano de Contas</a>
-        <a class="navbar-brand" href="<?php echo BASE_URL;?>/clientes">Clientes</a>
-        <a class="navbar-brand" href="<?php echo BASE_URL;?>/">Produtos</a>
-        <a class="navbar-brand" href="<?php echo BASE_URL;?>/">Compras</a>
-        <a class="navbar-brand" href="<?php echo BASE_URL;?>/">Vendas</a>
+            <a class="navbar-brand" href="/sysfin-4dsn/">SysFin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Cadastros
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/sysfin-4dsn/contas">Plano de Contas</a></li>
+                            <li><a class="dropdown-item" href="/sysfin-4dsn/clientes">Clientes</a></li>
+                            <li><a class="dropdown-item" href="/sysfin-4dsn/">Produtos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sysfin-4dsn/">Compras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sysfin-4dsn/">Vendas</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-person-fill"></i> Entrar
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <main class="container">
+
+    <main class="container flex-grow-1">
