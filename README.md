@@ -19,3 +19,10 @@ composer install
 
 `git checkout develop`  
 `git checkout -b <nome_branch>`  
+
+* ao terminar sua contribuição, faça __push__ para o servidor remoto no branch que você criou. Por exemplo:  
+`git add .`  
+`git commit -m "mensagem do commit"`  
+`git push -u origin <nome_branch>`  
+
+* crie um novo __PULL REQUEST__ no repositório, para que o seu branch seja analisado e, se estiver correto, seja adicionado ao branch __develop__ pelo gerente do projeto.
