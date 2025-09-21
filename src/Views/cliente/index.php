@@ -22,8 +22,8 @@
                     <td><?= htmlspecialchars($cliente->nome) ?></td>
                     <td><?= htmlspecialchars($cliente->cpf_cnpj) ?></td>
                     <td>
-                        <a class="btn btn-warning btn-sm" href="/clientes/editar/<?= $cliente->id ?>">Editar</a>
-                        <a class="btn btn-danger btn-sm" href="/clientes/excluir/<?= $cliente->id ?>" onclick="return confirm('Tem certeza?')">Excluir</a>
+                        <a class="btn btn-warning btn-sm" href="clientes/editar/<?= $cliente->id ?>">Editar</a>
+                        <a class="btn btn-danger btn-sm" href="clientes/excluir/<?= $cliente->id ?>" onclick="return confirm('Tem certeza?')">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
