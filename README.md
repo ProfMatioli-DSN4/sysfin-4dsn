@@ -17,6 +17,6 @@ composer install
 ## Para contribuir com esse projeto
 * crie um novo branch, a partir do branch __develop__
 `
-git checkout develop
-git checkout -b <nome_branch>
+git checkout develop  
+git checkout -b <nome_branch>  
 `
