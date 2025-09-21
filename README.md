@@ -18,4 +18,4 @@ composer install
 * crie um novo branch, a partir do branch __develop__  
 
 `git checkout develop`  
-`git checkout -b __<nome_branch>__`  
+`git checkout -b <nome_branch>`  
