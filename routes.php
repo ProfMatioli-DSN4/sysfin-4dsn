@@ -6,4 +6,10 @@ return function (FastRoute\RouteCollector $r) {
     
     //clientes;
     $r->addRoute('GET', '/clientes', [ 'App\Controllers\ClienteController', 'index']);
+
+    //produtos;
+    $r->addRoute('GET', '/produtos', [ 'App\Controllers\ProdutoController', 'index']);
+    $r->addRoute('GET', '/produtos/novo', [ 'App\Controllers\ProdutoController', 'create']);
+
+
 };
