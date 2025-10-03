@@ -23,7 +23,7 @@
                     <td><?= $produto->id ?></td>
                     <td><?= htmlspecialchars($produto->nome) ?></td>
                     <td><?= htmlspecialchars($produto->descricao) ?></td>
-                    <td><?= htmlspecialchars($produto->preco_venda) ?></td>
+                    <td>R$ <?= htmlspecialchars($produto->preco_venda) ?></td>
                     <td><?= htmlspecialchars($produto->estoque_atual) ?></td>
                     <td>
                         <a class="btn btn-warning btn-sm" href="produtos/editar/<?= $produto->id ?>">Editar</a>

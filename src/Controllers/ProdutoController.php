@@ -30,7 +30,6 @@ class ProdutoController
             $produto->nome = $_POST['nome'];
             $produto->preco_venda = $_POST['preco_venda'];
             $produto->descricao = $_POST['descricao'];
-            $produto->estoque_atual = $_POST['estoque_atual'] ?? $produto->estoque_atual;
             $produto->save();
             header('Location: '. BASE_URL .'/produtos');
         } else {
