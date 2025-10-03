@@ -9,7 +9,9 @@ return function (FastRoute\RouteCollector $r) {
 
     //produtos;
     $r->addRoute('GET', '/produtos', [ 'App\Controllers\ProdutoController', 'index']);
-    $r->addRoute('GET', '/produtos/novo', [ 'App\Controllers\ProdutoController', 'create']);
+    $r->addRoute(['GET','POST'], '/produtos/novo', [ 'App\Controllers\ProdutoController', 'create']);
+    $r->addRoute('GET', '/produtos/excluir/{id:\d+}', [ 'App\Controllers\ProdutoController', 'delete']);
+    $r->addRoute(['GET','POST'], '/produtos/editar/{id:\d+}', [ 'App\Controllers\ProdutoController', 'edit']);
 
 
 };

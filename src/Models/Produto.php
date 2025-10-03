@@ -7,14 +7,16 @@ use PDO;
 // Nome, Descrição, Preço de Venda e Estoque Inicial
 
 class Produto {
+
+    public $id;
     
     public $nome;
     
     public $descricao;
     
-    public $precoVenda;
+    public $preco_venda;
     
-    public $estoque;
+    public $estoque_atual;
     
     public static function getAll(){
         $pdo = Database::getConnection();
@@ -36,26 +38,26 @@ class Produto {
             // Atualizar 
             $stmt = $pdo->prepare(
                 'UPDATE produtos SET nome = :nome, descricao = :descricao, 
-                precoVenda = :precoVenda, estoque = :estoque WHERE id = :id'
+                preco_venda = :preco_venda, estoque_atual = :estoque_atual WHERE id = :id'
             );
             $stmt->execute([
                 'id' => $this->id,
                 'nome' => $this->nome,
                 'descricao' => $this->descricao,
-                'precoVenda' => $this->precoVenda,
-                'estoque' => $this->estoque
+                'preco_venda' => $this->preco_venda,
+                'estoque_atual' => $this->estoque_atual
             ]);
         } else {
             // Inserir 
             $stmt = $pdo->prepare(
-                'INSERT INTO produtos (nome, descricao, precoVenda, estoque) 
-VALUES (:nome, :descricao, :precoVenda, :estoque)'
+                'INSERT INTO produtos (nome, descricao, preco_venda, estoque_atual) 
+VALUES (:nome, :descricao, :preco_venda, :estoque_atual)'
             );
             $stmt->execute([
                 'nome' => $this->nome,
                 'descricao' => $this->descricao,
-                'precoVenda' => $this->precoVenda,
-                'estoque' => $this->estoque
+                'preco_venda' => $this->preco_venda,
+                'estoque_atual' => $this->estoque_atual
             ]);
             $this->id = $pdo->lastInsertId();
         }

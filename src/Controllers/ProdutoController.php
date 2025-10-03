@@ -14,11 +14,11 @@ class ProdutoController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $produto = new Produto();
             $produto->nome = $_POST['nome'];
-            $produto->precoVenda = $_POST['precoVenda'];
+            $produto->preco_venda = $_POST['preco_venda'];
             $produto->descricao = $_POST['descricao'];
-            $produto->estoque = $_POST['estoque'];
+            $produto->estoque_atual = $_POST['estoque_atual'] ?? $produto->estoque_atual;
             $produto->save();
-            header('Location: /produtos');
+            header('Location: '. BASE_URL .'/produtos');
         } else {
             require __DIR__ . '/../Views/produto/create.php';
         }
@@ -28,11 +28,11 @@ class ProdutoController
         $produto = Produto::getById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $produto->nome = $_POST['nome'];
-            $produto->precoVenda = $_POST['precoVenda'];
+            $produto->preco_venda = $_POST['preco_venda'];
             $produto->descricao = $_POST['descricao'];
-            $produto->estoque = $_POST['estoque'];
+            $produto->estoque_atual = $_POST['estoque_atual'] ?? $produto->estoque_atual;
             $produto->save();
-            header('Location: /produtos');
+            header('Location: '. BASE_URL .'/produtos');
         } else {
             require __DIR__ . '/../Views/produto/edit.php';
         }
@@ -40,6 +40,6 @@ class ProdutoController
     public function delete($id)
     {
         Produto::delete($id);
-        header('Location: /produtos');
+        header('Location: '. BASE_URL .'/produtos');
     }
 }
