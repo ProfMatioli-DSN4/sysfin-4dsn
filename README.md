@@ -6,7 +6,7 @@
 
 ## Para usar este projeto:
 * Clone o projeto
-git clone https://github.com/ProfMatioli-TDS2/sysfin-4dsn.git
+git clone https://github.com/ProfMatioli-DSN4/sysfin-4dsn.git
 
 * Faça checkout para no branch __develop__
 git checkout develop
