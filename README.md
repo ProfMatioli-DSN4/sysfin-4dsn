@@ -33,8 +33,8 @@ Antes de começar a trabalhar em uma nova tarefa ou após terminar de trabalhar 
 ### 1. Vá para a Branch `develop`
 Primeiro, certifique-se de que você está na branch `develop`, onde todas as atualizações principais do projeto estão sendo feitas.
 
-`git checkout develop`
-`git pull origin develop`
+`git checkout develop` 
+`git pull origin develop` 
 
 
 ## Voltando para sua Branch de Trabalho e Fazendo o Merge com `develop`
