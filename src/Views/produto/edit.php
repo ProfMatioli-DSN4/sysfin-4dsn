@@ -12,7 +12,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label" for="precoVenda">Preço de Venda:</label>
-            <input class="form-control" type="number" id="precoVenda" name="preco_venda" value="<?= $produto->preco_venda;?>" required>
+            <input class="form-control" type="number" step=".01" id="precoVenda" name="preco_venda" value="<?= $produto->preco_venda;?>" required>
         </div>
         <div class="mb-3">
             <label class="form-label" for="estoque">Estoque:</label>
