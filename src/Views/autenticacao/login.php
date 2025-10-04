@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -11,20 +11,23 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
+    <?php require __DIR__ . '/../layout/header_login.php'; ?>
+
     <main class="d-flex align-items-center justify-content-center flex-grow-1">
-        <div class="card col-md-6">
+        <div class="card col-md-5 shadow-sm">
             <div class="card-body">
                 <h2 class="card-title text-center">Acesse sua Conta</h2>
                 <form class="needs-validation" novalidate>
                     <div class="mb-3">
-                        <label for="email" class="form-label">E-mail:</label>
+                        <label for="email" class="form-label fw-bold">E-mail:</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                         <div class="invalid-feedback">
                             Por favor, informe o seu e-mail.
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="senha" class="form-label">Senha:</label>
+                        <label for="senha" class="form-label fw-bold">Senha:</label>
                         <input type="password" class="form-control" id="senha" name="senha" required>
                         <div class="invalid-feedback">
                             Por favor, insira uma senha válida.
@@ -37,21 +40,22 @@
             </div>
 
         </div>
+    </main>
 
-        <script>
-            const forms = document.querySelectorAll('.needs-validation')
+    <?php require __DIR__ . '/../layout/footer.php'; ?>
 
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
+    <script>
+        const forms = document.querySelectorAll('.needs-validation')
 
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        </script>
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
 
-        <?php require __DIR__ . '/../layout/footer.php'; ?>
+                form.classList.add('was-validated')
+            }, false)
+        })
+    </script>

@@ -1,6 +1,32 @@
 /* Folha de estilos personalizada */
 
+/* Cor padrão azul claro para header/footer */
 .bg-custom-color {
-    /* Altere o código hexadecimal aqui para a cor que desejar */
-    background-color: #8de7ef;
+    background-color: #8de7ef; /* cor do print */
+}
+
+/* ESTILIZAÇÃO DO LOGIN */
+.card {
+    background-color: #c9eff2;
+    border-radius: 20px;
+    border: 1px solid #87cfd4;
+    padding: 20px;
+}
+/* Título */
+.card-title {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+/* Inputs */
+.form-control {
+    border-radius: 30px;
+    padding: 10px 15px;
+}
+/* Botão */
+.btn-primary {
+    border: none;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: 0.3s;
 }
