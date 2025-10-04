@@ -27,7 +27,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Plano de Contas</a></li>
                             <li><a class="dropdown-item" href="clientes">Clientes</a></li>
-                            <li><a class="dropdown-item" href="#">Produtos</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/produtos">Produtos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
