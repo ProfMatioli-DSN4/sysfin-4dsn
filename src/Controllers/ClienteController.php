@@ -34,7 +34,7 @@ class ClienteController
             $cliente->save();
             header('Location: /clientes');
         } else {
-            require __DIR__ . '/../Views/cliente/edit.php';
+            require __DIR__ . '/../Views/cliente/editar.php';
         }
     }
     public function delete($id)
