@@ -6,6 +6,7 @@ class ProdutoController
 {
     public function index()
     {
+        AutenticacaoController::require_auth(['Administrador','Tesoureiro','Vendedor']);
         $produtos = Produto::getAll();
         require __DIR__ . '/../Views/produto/index.php';
     }
