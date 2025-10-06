@@ -26,7 +26,7 @@ composer install
 
 * crie um novo __PULL REQUEST__ no repositório, para que o seu branch seja analisado e, se estiver correto, seja adicionado ao branch __develop__ pelo gerente do projeto.
 
-* ## Atualizando sua Branch com a Última Versão da `develop`
+## Atualizando sua Branch com a Última Versão da `develop`
 
 Antes de começar a trabalhar em uma nova tarefa ou após terminar de trabalhar em sua branch, é importante garantir que sua cópia local da branch `develop` esteja sempre atualizada. Para isso, siga os passos abaixo para puxar as últimas atualizações de `develop`:
 
