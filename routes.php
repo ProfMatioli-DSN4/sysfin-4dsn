@@ -21,4 +21,11 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('POST', '/profiles/update/{id:\d+}', ['App\Controllers\ProfileController', 'update']);
     $r->addRoute('GET', '/profiles/delete/{id:\d+}', ['App\Controllers\ProfileController', 'delete']);
 
+    // Usuários
+    $r->addRoute('GET', '/users', ['App\Controllers\UserController', 'index']);
+    $r->addRoute('GET', '/users/create', ['App\Controllers\UserController', 'create']);
+    $r->addRoute('POST', '/users/store', ['App\Controllers\UserController', 'store']);
+    $r->addRoute('GET', '/users/edit/{id:\d+}', ['App\Controllers\UserController', 'edit']);
+    $r->addRoute('POST', '/users/update/{id:\d+}', ['App\Controllers\UserController', 'update']);
+    $r->addRoute('GET', '/users/delete/{id:\d+}', ['App\Controllers\UserController', 'delete']);
 };
