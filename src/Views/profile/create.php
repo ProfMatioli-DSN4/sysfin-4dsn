@@ -1,0 +1,9 @@
+<?php require '../layout/header.php'; ?>
+<h1>Novo Perfil</h1>
+<form action="/profiles/store" method="POST">
+    <label for="name">Nome:</label>
+    <input type="text" name="name" id="name" required>
+    <button type="submit">Salvar</button>
+</form>
+<?php require '../layout/footer.php'; ?>
+
