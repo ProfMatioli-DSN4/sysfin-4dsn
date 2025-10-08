@@ -30,6 +30,15 @@
                             <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/produtos">Produtos</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Segurança
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/users">Usuários</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/profiles">Perfis</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/sysfin-4dsn/">Compras</a>
                     </li>
