@@ -1,39 +1,67 @@
 <?php
-class FornecedoresModel {
-    private $pdo;
+// App/Models/Fornecedor.php
+namespace App\Models;
+use App\Core\Database;
+use PDO;
 
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
-    }
+class Fornecedores
+{
+    public $id;
+    public $nome;
+    public $cnpj;
+    public $email;
+    public $telefone;
 
-    public function listar($busca = '') {
+    public static function getAll($busca = null)
+    {
+        $pdo = Database::getConnection();
         if ($busca) {
-            $stmt = $this->pdo->prepare("SELECT * FROM fornecedores WHERE nome LIKE ?");
-            $stmt->execute(["%$busca%"]);
+            $stmt = $pdo->prepare('SELECT * FROM fornecedores WHERE nome LIKE :busca ORDER BY id DESC');
+            $stmt->execute(['busca' => "%$busca%"]);
         } else {
-            $stmt = $this->pdo->query("SELECT * FROM fornecedores ORDER BY id DESC");
+            $stmt = $pdo->query('SELECT * FROM fornecedores ORDER BY id DESC');
         }
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscarPorId($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM fornecedores WHERE id = ?");
-        $stmt->execute([$id]);
+    public static function find($id)
+    {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare('SELECT * FROM fornecedores WHERE id = :id');
+        $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function salvar($id, $nome, $cnpj, $email, $telefone) {
-        if ($id) {
-            $stmt = $this->pdo->prepare("UPDATE fornecedores SET nome=?, cnpj=?, email=?, telefone=? WHERE id=?");
-            return $stmt->execute([$nome, $cnpj, $email, $telefone, $id]);
+    public function save()
+    {
+        $pdo = Database::getConnection();
+        if (!empty($this->id)) {
+            $stmt = $pdo->prepare('UPDATE fornecedores SET nome=:nome, cnpj=:cnpj, email=:email, telefone=:telefone WHERE id=:id');
+            $stmt->execute([
+                'nome' => $this->nome,
+                'cnpj' => $this->cnpj,
+                'email' => $this->email,
+                'telefone' => $this->telefone,
+                'id' => $this->id
+            ]);
         } else {
-            $stmt = $this->pdo->prepare("INSERT INTO fornecedores (nome, cnpj, email, telefone) VALUES (?, ?, ?, ?)");
-            return $stmt->execute([$nome, $cnpj, $email, $telefone]);
+            $stmt = $pdo->prepare('INSERT INTO fornecedores (nome, cnpj, email, telefone) VALUES (:nome, :cnpj, :email, :telefone)');
+            $stmt->execute([
+                'nome' => $this->nome,
+                'cnpj' => $this->cnpj,
+                'email' => $this->email,
+                'telefone' => $this->telefone
+            ]);
+            $this->id = $pdo->lastInsertId();
         }
+        return $stmt->rowCount() > 0;
     }
 
-    public function excluir($id) {
-        $stmt = $this->pdo->prepare("DELETE FROM fornecedores WHERE id=?");
-        return $stmt->execute([$id]);
+    public static function delete($id)
+    {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare('DELETE FROM fornecedores WHERE id = :id');
+        $stmt->execute(['id' => $id]);
+        return $stmt->rowCount() > 0;
     }
 }
