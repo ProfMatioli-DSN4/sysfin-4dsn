@@ -13,5 +13,6 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/produtos/excluir/{id:\d+}', [ 'App\Controllers\ProdutoController', 'delete']);
     $r->addRoute(['GET','POST'], '/produtos/editar/{id:\d+}', [ 'App\Controllers\ProdutoController', 'edit']);
 
-
+    //relatorio estoque;
+    $r->addRoute('GET', '/relatorio-estoque', ['App\Controllers\RelatorioEstoqueController', 'index']);
 };
