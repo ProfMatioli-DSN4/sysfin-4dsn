@@ -2,7 +2,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Gestão de Fornecedores</h1>
-    <a class="btn btn-primary" href="<?php echo BASE_URL; ?>/fornecedores/novo">Adicionar Fornecedor</a>
+    <a class="btn btn-primary" href="<?php echo BASE_URL; ?>fornecedor/novo">Adicionar Fornecedor</a>
 </div>
 
 <div class="table-responsive">
@@ -18,8 +18,8 @@
             </tr>
         </thead>
         <tbody>
-            <?php if (!empty($fornecedores)): ?>
-                <?php foreach ($fornecedores as $fornecedor): ?>
+            <?php if (!empty($fornecedor)): ?>
+                <?php foreach ($fornecedor as $fornecedor): ?>
                     <tr>
                         <td><?= $fornecedor->id ?></td>
                         <td><?= htmlspecialchars($fornecedor->nome) ?></td>
@@ -27,8 +27,8 @@
                         <td><?= htmlspecialchars($fornecedor->email) ?></td>
                         <td><?= htmlspecialchars($fornecedor->telefone) ?></td>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="<?php echo BASE_URL; ?>/fornecedores/edit/<?= $fornecedor->id ?>">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo BASE_URL; ?>/fornecedores/delete/<?= $fornecedor->id ?>" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">Excluir</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo BASE_URL; ?>/fornecedor/edit/<?= $fornecedor->id ?>">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo BASE_URL; ?>/fornecedor/delete/<?= $fornecedor->id ?>" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

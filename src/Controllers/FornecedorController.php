@@ -1,16 +1,16 @@
 <?php
-// App/Controllers/FornecedoresController.php
+// App/Controllers/fornecedorController.php
 namespace App\Controllers;
-use App\Models\Fornecedores;
+use App\Models\Fornecedor;
 use Dompdf\Dompdf;
 
-class FornecedoresController
+class FornecedorController
 {
     public function index()
     {
         $busca = $_GET['busca'] ?? null;
-        $fornecedores = Fornecedores::getAll($busca);
-        require __DIR__ . '/../Views/fornecedores/listar.php';
+        $fornecedor = Fornecedor::getAll($busca);
+        require __DIR__ . '/../Views/fornecedor/listar.php';
     }
 
     public function create()
@@ -19,19 +19,19 @@ class FornecedoresController
             $cnpj = preg_replace('/\D/', '', $_POST['cnpj'] ?? '');
             if (strlen($cnpj) !== 14) {
                 $error = 'CNPJ inválido. Deve conter 14 dígitos.';
-                require __DIR__ . '/../Views/fornecedores/form.php';
+                require __DIR__ . '/../Views/fornecedor/form.php';
                 return;
             }
-            $fornecedor = new Fornecedores();
+            $fornecedor = new Fornecedor();
             $fornecedor->nome = $_POST['nome'] ?? '';
             $fornecedor->cnpj = $cnpj;
             $fornecedor->email = $_POST['email'] ?? '';
             $fornecedor->telefone = $_POST['telefone'] ?? '';
             $fornecedor->save();
-            header('Location: /fornecedores');
+            header('Location: ../fornecedor');
         } else {
             $fornecedor = null;
-            require __DIR__ . '/../Views/fornecedores/form.php';
+            require __DIR__ . '/../Views/fornecedor/form.php';
         }
     }
 
@@ -41,35 +41,35 @@ class FornecedoresController
             $cnpj = preg_replace('/\D/', '', $_POST['cnpj'] ?? '');
             if (strlen($cnpj) !== 14) {
                 $error = 'CNPJ inválido. Deve conter 14 dígitos.';
-                $fornecedor = Fornecedores::find($id);
-                require __DIR__ . '/../Views/fornecedores/form.php';
+                $fornecedor = Fornecedor::find($id);
+                require __DIR__ . '/../Views/fornecedor/form.php';
                 return;
             }
-            $fornecedor = new Fornecedores();
+            $fornecedor = new Fornecedor();
             $fornecedor->id = $id;
             $fornecedor->nome = $_POST['nome'] ?? '';
             $fornecedor->cnpj = $cnpj;
             $fornecedor->email = $_POST['email'] ?? '';
             $fornecedor->telefone = $_POST['telefone'] ?? '';
             $fornecedor->save();
-            header('Location: /fornecedores');
+            header('Location: ../../fornecedor');
         } else {
-            $fornecedor = Fornecedores::find($id);
-            require __DIR__ . '/../Views/fornecedores/form.php';
+            $fornecedor = Fornecedor::find($id);
+            require __DIR__ . '/../Views/fornecedor/form.php';
         }
     }
 
     public function delete($id)
     {
-        Fornecedores::delete($id);
-        header('Location: /fornecedores');
+        Fornecedor::delete($id);
+        header('Location: ../../fornecedor');
     }
 
     public function relatorio()
     {
-        $fornecedores = Fornecedores::getAll();
+        $fornecedor = fornecedor::getAll();
         ob_start();
-        require __DIR__ . '/../Views/fornecedores/relatorio_html.php';
+        require __DIR__ . '/../Views/fornecedor/relatorio_html.php';
         $html = ob_get_clean();
 
         require_once __DIR__ . '/../../vendor/autoload.php';
@@ -79,7 +79,7 @@ class FornecedoresController
         $dompdf->render();
 
         header('Content-Type: application/pdf');
-        header('Content-Disposition: inline; filename="fornecedores_relatorio.pdf"');
+        header('Content-Disposition: inline; filename="fornecedor_relatorio.pdf"');
         echo $dompdf->output();
         exit;
     }

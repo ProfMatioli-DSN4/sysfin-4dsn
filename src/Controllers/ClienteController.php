@@ -1,5 +1,4 @@
 <?php
-// App/Controllers/ClienteController.php 
 namespace App\Controllers;
 use App\Models\Cliente;
 class ClienteController

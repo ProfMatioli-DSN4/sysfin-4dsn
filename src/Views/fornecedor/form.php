@@ -1,7 +1,5 @@
-<?php
-// form.php
-?>
-<h2><?= $fornecedor ? "Editar" : "Novo" ?> Fornecedor</h2>
+<?php require __DIR__ . '/../layout/header.php'; ?>
+<h2><?= $fornecedor ? "Editar" : "Novo" ?> fornecedor</h2>
 
 <?php if (!empty($error)): ?>
     <div style="color: red;"><?= $error ?></div>
@@ -37,4 +35,6 @@ function mascaraCNPJ(input) {
     v = v.replace(/(\d{4})(\d)/, "$1-$2");
     input.value = v;
 }
+
 </script>
+<?php require __DIR__ . '/../layout/footer.php'; ?>

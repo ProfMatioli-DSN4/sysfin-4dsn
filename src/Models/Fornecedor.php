@@ -1,10 +1,9 @@
 <?php
-// App/Models/Fornecedor.php
 namespace App\Models;
 use App\Core\Database;
 use PDO;
 
-class Fornecedores
+class Fornecedor
 {
     public $id;
     public $nome;

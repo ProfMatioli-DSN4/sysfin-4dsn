@@ -8,12 +8,12 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/clientes', [ 'App\Controllers\ClienteController', 'index']);
 
         //fornecedores;
-    $r->addRoute('GET', '/fornecedores', ['App\Controllers\FornecedoresController', 'index']);
-    $r->addRoute('GET', '/fornecedores/relatorio', ['App\Controllers\FornecedoresController', 'relatorio']);
-    $r->addRoute('GET', '/fornecedores/{id:\d+}/edit', ['App\Controllers\FornecedoresController', 'edit']);
-    $r->addRoute('POST', '/fornecedores/{id:\d+}/edit', ['App\Controllers\FornecedoresController', 'edit']);
-    $r->addRoute('GET', '/fornecedores/create', ['App\Controllers\FornecedoresController', 'create']);
-    $r->addRoute('POST', '/fornecedores/create', ['App\Controllers\FornecedoresController', 'create']);
-    $r->addRoute('GET', '/fornecedores/{id:\d+}/delete', ['App\Controllers\FornecedoresController', 'delete']);
+    $r->addRoute('GET', '/fornecedor', ['App\Controllers\FornecedorController', 'index']);
+    $r->addRoute('GET', '/fornecedor/relatorio', ['App\Controllers\FornecedorController', 'relatorio']);
+    $r->addRoute('GET', '/fornecedor/{id:\d+}/edit', ['App\Controllers\FornecedorController', 'edit']);
+    $r->addRoute('POST', '/fornecedor/{id:\d+}/edit', ['App\Controllers\FornecedorController', 'edit']);
+    $r->addRoute('GET', '/fornecedor/create', ['App\Controllers\FornecedorController', 'create']);
+    $r->addRoute('POST', '/fornecedor/create', ['App\Controllers\FornecedorController', 'create']);
+    $r->addRoute('GET', '/fornecedor/{id:\d+}/delete', ['App\Controllers\FornecedorController', 'delete']);
 
 };

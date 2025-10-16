@@ -1,11 +1,9 @@
-<?php
-// listar.php
-?>
+<?php require __DIR__ . '/../layout/header.php'; ?>
 <h2>Fornecedores</h2>
-<a href="/fornecedores/create">+ Novo Fornecedor</a> |
-<a href="/fornecedores/relatorio" target="_blank">📄 Exportar PDF</a>
+<a href="fornecedor/create">+ Novo Fornecedor</a> |
+<a href="fornecedor/relatorio" target="_blank">📄 Exportar PDF</a>
 
-<form method="get" action="/fornecedores">
+<form method="get" action="">
     <input type="text" name="busca" placeholder="Buscar por nome" value="<?= htmlspecialchars($_GET['busca'] ?? '') ?>">
     <button type="submit">Buscar</button>
 </form>
@@ -14,7 +12,7 @@
     <tr>
         <th>ID</th><th>Nome</th><th>CNPJ</th><th>Email</th><th>Telefone</th><th>Ações</th>
     </tr>
-    <?php foreach($fornecedores as $f): ?>
+    <?php foreach($fornecedor as $f): ?>
         <tr>
             <td><?= $f['id'] ?></td>
             <td><?= htmlspecialchars($f['nome']) ?></td>
@@ -22,9 +20,10 @@
             <td><?= htmlspecialchars($f['email']) ?></td>
             <td><?= htmlspecialchars($f['telefone']) ?></td>
             <td>
-                <a href="/fornecedores/<?= $f['id'] ?>/edit">✏️ Editar</a> |
-                <a href="/fornecedores/<?= $f['id'] ?>/delete" onclick="return confirm('Excluir fornecedor?')">🗑️ Excluir</a>
+                <a href="fornecedor/<?= $f['id'] ?>/edit">✏️ Editar</a> |
+                <a href="fornecedor/<?= $f['id'] ?>/delete" onclick="return confirm('Excluir fornecedor?')">🗑️ Excluir</a>
             </td>
         </tr>
     <?php endforeach; ?>
 </table>
+<?php require __DIR__ . '/../layout/footer.php'; ?>
