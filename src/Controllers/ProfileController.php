@@ -9,12 +9,12 @@ class ProfileController
     public function index()
     {
         $profiles = Profile::findAll();
-        require '../src/Views/profile/index.php';
+        require __DIR__ . '/../Views/profile/index.php';
     }
 
     public function create()
     {
-        require '../src/Views/profile/create.php';
+        require __DIR__ . '/../Views/profile/create.php';
     }
 
     public function store()
@@ -29,7 +29,7 @@ class ProfileController
     {
         $id = $params[0];
         $profile = Profile::findById($id);
-        require '../src/Views/profile/edit.php';
+        require __DIR__ . '/../Views/profile/edit.php';
     }
 
     public function update($params)

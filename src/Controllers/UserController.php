@@ -10,13 +10,13 @@ class UserController
     public function index()
     {
         $users = User::findAll();
-        require '../src/Views/user/index.php';
+        require __DIR__ . '/../Views/user/index.php';
     }
 
     public function create()
     {
         $profiles = Profile::findAll();
-        require '../src/Views/user/create.php';
+        require __DIR__ . '/../Views/user/create.php';
     }
 
     public function store()
@@ -40,7 +40,7 @@ class UserController
         $id = $params[0];
         $user = User::findById($id);
         $profiles = Profile::findAll();
-        require '../src/Views/user/edit.php';
+        require __DIR__ . '/../Views/user/edit.php';
     }
 
     public function update($params)
