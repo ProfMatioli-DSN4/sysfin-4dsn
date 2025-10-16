@@ -4,9 +4,9 @@ use PDO;
 use PDOException;
 
 define('DB_HOST', '143.106.241.4'); 
-define('DB_NAME', 'matioli'); // Nome do banco de dados 
-define('DB_USER', 'bancomatioli'); // Usuario do banco de dados
-define('DB_PASS', 'senhabanco'); // Senha do banco de dados 
+define('DB_NAME', 'cl201020'); // Nome do banco de dados 
+define('DB_USER', 'cl201020'); // Usuario do banco de dados
+define('DB_PASS', 'cl*20032006'); // Senha do banco de dados 
 
 class Database
 {
