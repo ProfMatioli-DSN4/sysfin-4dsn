@@ -1,4 +1,4 @@
-<?php require '../layout/header.php'; ?>
+<?php require __DIR__ . '/../layout/header.php'; ?>
 <h1>Editar Usuário</h1>
 <form action="/users/update/<?= $user->id ?>" method="POST">
     <label for="nome">Nome:</label>
@@ -24,4 +24,4 @@
     <br>
     <button type="submit">Salvar</button>
 </form>
-<?php require '../layout/footer.php'; ?>
+<?php require __DIR__ . '/../layout/footer.php'; ?>

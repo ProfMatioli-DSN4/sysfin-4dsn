@@ -1,4 +1,4 @@
-<?php require '../layout/header.php'; ?>
+<?php require __DIR__ . '/../layout/header.php'; ?>
 <h1>Perfis</h1>
 <a href="/profiles/create">Novo Perfil</a>
 <table>
@@ -22,4 +22,4 @@
         <?php endforeach; ?>
     </tbody>
 </table>
-<?php require '../layout/footer.php'; ?>
+<?php require __DIR__ . '/../layout/footer.php'; ?>
