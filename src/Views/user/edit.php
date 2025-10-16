@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 <h1>Editar Usuário</h1>
-<form action="/users/update/<?= $user->id ?>" method="POST">
+<form action="<?php echo BASE_URL; ?>/users/update/<?= $user->id ?>" method="POST">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" id="nome" value="<?= $user->nome ?>" required>
     <br>

@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
 <h1>Usuários</h1>
-<a href="/users/create" class="btn btn-primary">Novo Usuário</a>
+<a href="users/create" class="btn btn-primary">Novo Usuário</a>
 <table class="table">
     <thead>
         <tr>
@@ -29,8 +29,8 @@
                     ?>
                 </td>
                 <td>
-                    <a href="/users/edit/<?= $user->id ?>" class="btn btn-sm btn-warning">Editar</a>
-                    <a href="/users/delete/<?= $user->id ?>" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir este usuário?');">Excluir</a>
+                    <a href="users/edit/<?= $user->id ?>" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="users/delete/<?= $user->id ?>" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir este usuário?');">Excluir</a>
                 </td>
             </tr>
         <?php endforeach; ?>

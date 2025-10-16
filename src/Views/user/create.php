@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 <h1>Novo Usuário</h1>
-<form action="/users/store" method="POST">
+<form action="<?php echo BASE_URL; ?>/users/store" method="POST">
     <label for="nome">Nome:</label>
     <input type="text" name="nome" id="nome" required>
     <br>
