@@ -62,4 +62,15 @@ VALUES (:nome, :cpf_cnpj, :email, :telefone)'
         $stmt->execute(['id' => $id]);
         return $stmt->rowCount() > 0;
     }
+    
+     @param string $nome 
+     @return array 
+     
+    public static function searchByName($nome)
+    {
+        $pdo = Database::getConnection(); // Usando o seu método de conexão
+        $stmt = $pdo->prepare('SELECT * FROM clientes WHERE nome LIKE :nome ORDER BY nome');
+        $stmt->execute(['nome' => '%' . $nome . '%']);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
 }
