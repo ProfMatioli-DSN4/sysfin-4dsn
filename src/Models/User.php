@@ -63,45 +63,54 @@ class User
         return $users;
     }
 
-    public function save(): bool
+    public function save(array $profileIds = [])
     {
-        $db = self::getDb();
-        if ($this->id) {
-            // Atualizar
-            $sql = "UPDATE usuarios SET nome = :nome, login = :login, ativo = :ativo";
-            if ($this->senha) {
-                $sql .= ", senha_hash = :senha_hash";
+        $db = new Database();
+        $conn = $db->getConnection();
+
+        $mainProfileId = !empty($profileIds) ? $profileIds[0] : null;
+        if ($mainProfileId === null && $this->id === null) {
+            $firstProfile = Profile::findAll(1);
+            if(!empty($firstProfile)){
+                $mainProfileId = $firstProfile[0]->id;
+            } else {
+                throw new \Exception("Nenhum perfil encontrado para associar ao usuário.");
             }
-            $sql .= " WHERE id = :id";
-            $stmt = $db->prepare($sql);
-        } else {
-            // Inserir
-            $stmt = $db->prepare("INSERT INTO usuarios (nome, login, senha_hash, ativo) VALUES (:nome, :login, :senha_hash, :ativo)");
         }
 
-        $stmt->bindValue(':nome', $this->nome, PDO::PARAM_STR);
-        $stmt->bindValue(':login', $this->login, PDO::PARAM_STR);
-        $stmt->bindValue(':ativo', $this->ativo, PDO::PARAM_BOOL);
 
-        if ($this->senha) {
-            $senha_hash = password_hash($this->senha, PASSWORD_DEFAULT);
-            $stmt->bindValue(':senha_hash', $senha_hash, PDO::PARAM_STR);
+        if ($this->id) {
+            $sql = "UPDATE usuarios SET nome = ?, login = ?, senha_hash = ?, ativo = ? WHERE id = ?";
+            $params = [$this->nome, $this->login, $this->senha_hash, $this->ativo, $this->id];
+
+            if ($mainProfileId !== null) {
+                $sql = "UPDATE usuarios SET nome = ?, login = ?, senha_hash = ?, ativo = ?, id_perfil = ? WHERE id = ?";
+                $params = [$this->nome, $this->login, $this->senha_hash, $this->ativo, $mainProfileId, $this->id];
+            }
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute($params);
+
+        } else {
+            $sql = "INSERT INTO usuarios (nome, login, senha_hash, ativo, id_perfil) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$this->nome, $this->login, $this->senha_hash, $this->ativo, $mainProfileId]);
+            $this->id = $conn->lastInsertId();
         }
 
         if ($this->id) {
-            $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $stmt = $conn->prepare("DELETE FROM usuario_perfis WHERE id_usuario = ?");
+            $stmt->execute([$this->id]);
+
+            if (!empty($profileIds)) {
+                $stmt = $conn->prepare("INSERT INTO usuario_perfis (id_usuario, id_perfil) VALUES (?, ?)");
+                foreach ($profileIds as $profileId) {
+                    $stmt->execute([$this->id, $profileId]);
+                }
+            }
         }
 
-        $result = $stmt->execute();
-        if (!$this->id) {
-            $this->id = $db->lastInsertId();
-        }
-
-        if ($result) {
-            $this->syncProfiles();
-        }
-
-        return $result;
+        return $this;
     }
 
     public function delete(): bool
@@ -111,12 +120,10 @@ class User
         }
         $db = self::getDb();
 
-        // Desvincular perfis
         $stmt = $db->prepare("DELETE FROM usuario_perfis WHERE id_usuario = :id_usuario");
         $stmt->bindValue(':id_usuario', $this->id, PDO::PARAM_INT);
         $stmt->execute();
 
-        // Excluir usuário
         $stmt = $db->prepare("DELETE FROM usuarios WHERE id = :id");
         $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $stmt->execute();
@@ -156,12 +163,10 @@ class User
         if (!$this->id) return;
 
         $db = self::getDb();
-        // Remover perfis antigos
         $stmt = $db->prepare("DELETE FROM usuario_perfis WHERE id_usuario = :id_usuario");
         $stmt->bindValue(':id_usuario', $this->id, PDO::PARAM_INT);
         $stmt->execute();
 
-        // Adicionar novos perfis
         if (!empty($this->profiles)) {
             $stmt = $db->prepare("INSERT INTO usuario_perfis (id_usuario, id_perfil) VALUES (:id_usuario, :id_perfil)");
             foreach ($this->profiles as $profileId) {

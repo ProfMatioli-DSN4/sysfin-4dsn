@@ -24,48 +24,42 @@ class UserController
         $user = new User();
         $user->nome = $_POST['nome'];
         $user->login = $_POST['login'];
-        $user->senha = $_POST['senha'];
-        $user->ativo = isset($_POST['ativo']);
-
-        if (isset($_POST['profiles'])) {
-            $user->setProfiles($_POST['profiles']);
+        if (!empty($_POST['senha'])) {
+            $user->senha_hash = password_hash($_POST['senha'], PASSWORD_DEFAULT);
         }
+        $user->ativo = isset($_POST['ativo']) ? 1 : 0;
 
-        $user->save();
-        header('Location: /users');
+        $profileIds = $_POST['profiles'] ?? [];
+        $user->save($profileIds);
+
+        header('Location: /sysfin-4dsn/users');
     }
 
-    public function edit($params)
+    public function edit($id)
     {
-        $id = $params[0];
         $user = User::findById($id);
-        $profiles = Profile::findAll();
-        require __DIR__ . '/../Views/user/edit.php';
+        $allProfiles = Profile::findAll();
+        require __DIR__ . '/../../Views/user/edit.php';
     }
 
-    public function update($params)
+    public function update($id)
     {
-        $id = $params[0];
         $user = User::findById($id);
-        if ($user) {
-            $user->nome = $_POST['nome'];
-            $user->login = $_POST['login'];
-            if (!empty($_POST['senha'])) {
-                $user->senha = $_POST['senha'];
-            }
-            $user->ativo = isset($_POST['ativo']);
-
-            $profileIds = $_POST['profiles'] ?? [];
-            $user->setProfiles($profileIds);
-
-            $user->save();
+        $user->nome = $_POST['nome'];
+        $user->login = $_POST['login'];
+        if (!empty($_POST['senha'])) {
+            $user->senha_hash = password_hash($_POST['senha'], PASSWORD_DEFAULT);
         }
-        header('Location: /users');
+        $user->ativo = isset($_POST['ativo']) ? 1 : 0;
+
+        $profileIds = $_POST['profiles'] ?? [];
+        $user->save($profileIds);
+
+        header('Location: /sysfin-4dsn/users');
     }
 
-    public function delete($params)
+    public function delete($id)
     {
-        $id = $params[0];
         $user = User::findById($id);
         if ($user) {
             $user->delete();
