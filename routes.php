@@ -13,5 +13,11 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/produtos/excluir/{id:\d+}', [ 'App\Controllers\ProdutoController', 'delete']);
     $r->addRoute(['GET','POST'], '/produtos/editar/{id:\d+}', [ 'App\Controllers\ProdutoController', 'edit']);
 
-
+    $r->addRoute('GET', '/plano-contas', ['App\Controllers\PlanoContasController', 'index']);
+    $r->addRoute(['GET'], '/plano-contas/novo', ['App\Controllers\PlanoContasController', 'createOrEdit']);
+    $r->addRoute('POST', '/plano-contas/salvar', ['App\Controllers\PlanoContasController', 'storeOrUpdate']);
+    $r->addRoute('GET', '/plano-contas/excluir/{id:\d+}', ['App\Controllers\PlanoContasController', 'delete']);
+    $r->addRoute(['GET'], '/plano-contas/editar/{id:\d+}', ['App\Controllers\PlanoContasController', 'createOrEdit']);
+    
 };
+
