@@ -12,15 +12,14 @@
     <tbody>
         <?php foreach ($profiles as $profile): ?>
             <tr>
-                <td><?= $profile['id'] ?></td>
-                <td><?= $profile['name'] ?></td>
+                <td><?= $profile->id ?></td>
+                <td><?= $profile->nome ?></td>
                 <td>
-                    <a href="/profiles/edit/<?= $profile['id'] ?>">Editar</a>
-                    <a href="/profiles/delete/<?= $profile['id'] ?>">Excluir</a>
+                    <a href="/profiles/edit/<?= $profile->id ?>">Editar</a>
+                    <a href="/profiles/delete/<?= $profile->id ?>">Excluir</a>
                 </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 <?php require '../layout/footer.php'; ?>
-

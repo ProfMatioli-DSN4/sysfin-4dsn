@@ -8,7 +8,7 @@ class ProfileController
 {
     public function index()
     {
-        $profiles = Profile::getAll();
+        $profiles = Profile::findAll();
         require '../src/Views/profile/index.php';
     }
 
@@ -19,26 +19,37 @@ class ProfileController
 
     public function store()
     {
-        Profile::create($_POST);
+        $profile = new Profile();
+        $profile->nome = $_POST['nome'];
+        $profile->save();
         header('Location: /profiles');
     }
 
-    public function edit($id)
+    public function edit($params)
     {
-        $profile = Profile::find($id);
+        $id = $params[0];
+        $profile = Profile::findById($id);
         require '../src/Views/profile/edit.php';
     }
 
-    public function update($id)
+    public function update($params)
     {
-        Profile::update($id, $_POST);
+        $id = $params[0];
+        $profile = Profile::findById($id);
+        if ($profile) {
+            $profile->nome = $_POST['nome'];
+            $profile->save();
+        }
         header('Location: /profiles');
     }
 
-    public function delete($id)
+    public function delete($params)
     {
-        Profile::delete($id);
+        $id = $params[0];
+        $profile = Profile::findById($id);
+        if ($profile) {
+            $profile->delete();
+        }
         header('Location: /profiles');
     }
 }
-

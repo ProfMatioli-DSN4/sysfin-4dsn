@@ -9,39 +9,67 @@ class UserController
 {
     public function index()
     {
-        $users = User::getAll();
+        $users = User::findAll();
         require '../src/Views/user/index.php';
     }
 
     public function create()
     {
-        $profiles = Profile::getAll();
+        $profiles = Profile::findAll();
         require '../src/Views/user/create.php';
     }
 
     public function store()
     {
-        User::create($_POST);
+        $user = new User();
+        $user->nome = $_POST['nome'];
+        $user->login = $_POST['login'];
+        $user->senha = $_POST['senha'];
+        $user->ativo = isset($_POST['ativo']);
+
+        if (isset($_POST['profiles'])) {
+            $user->setProfiles($_POST['profiles']);
+        }
+
+        $user->save();
         header('Location: /users');
     }
 
-    public function edit($id)
+    public function edit($params)
     {
-        $user = User::find($id);
-        $profiles = Profile::getAll();
+        $id = $params[0];
+        $user = User::findById($id);
+        $profiles = Profile::findAll();
         require '../src/Views/user/edit.php';
     }
 
-    public function update($id)
+    public function update($params)
     {
-        User::update($id, $_POST);
+        $id = $params[0];
+        $user = User::findById($id);
+        if ($user) {
+            $user->nome = $_POST['nome'];
+            $user->login = $_POST['login'];
+            if (!empty($_POST['senha'])) {
+                $user->senha = $_POST['senha'];
+            }
+            $user->ativo = isset($_POST['ativo']);
+
+            $profileIds = $_POST['profiles'] ?? [];
+            $user->setProfiles($profileIds);
+
+            $user->save();
+        }
         header('Location: /users');
     }
 
-    public function delete($id)
+    public function delete($params)
     {
-        User::delete($id);
+        $id = $params[0];
+        $user = User::findById($id);
+        if ($user) {
+            $user->delete();
+        }
         header('Location: /users');
     }
 }
-

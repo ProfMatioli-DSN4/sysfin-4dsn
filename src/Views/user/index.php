@@ -7,6 +7,7 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Login</th>
+            <th>Ativo</th>
             <th>Perfis</th>
             <th>Ações</th>
         </tr>
@@ -14,17 +15,25 @@
     <tbody>
         <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= $user['id'] ?></td>
-                <td><?= $user['name'] ?></td>
-                <td><?= $user['login'] ?></td>
-                <td><?= $user['profiles'] ?></td>
+                <td><?= $user->id ?></td>
+                <td><?= $user->nome ?></td>
+                <td><?= $user->login ?></td>
+                <td><?= $user->ativo ? 'Sim' : 'Não' ?></td>
                 <td>
-                    <a href="/users/edit/<?= $user['id'] ?>">Editar</a>
-                    <a href="/users/delete/<?= $user['id'] ?>">Excluir</a>
+                    <?php
+                    $profileNames = [];
+                    foreach ($user->getProfiles() as $profile) {
+                        $profileNames[] = $profile->nome;
+                    }
+                    echo implode(', ', $profileNames);
+                    ?>
+                </td>
+                <td>
+                    <a href="/users/edit/<?= $user->id ?>">Editar</a>
+                    <a href="/users/delete/<?= $user->id ?>">Excluir</a>
                 </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 <?php require '../layout/footer.php'; ?>
-
