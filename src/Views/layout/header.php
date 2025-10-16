@@ -30,8 +30,11 @@
                             <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/produtos">Produtos</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sysfin-4dsn/">Compras</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Compras</a>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/compras/novo">Registrar Compra</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/sysfin-4dsn/">Vendas</a>
