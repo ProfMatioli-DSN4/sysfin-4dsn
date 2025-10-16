@@ -61,10 +61,7 @@ VALUES (:nome, :cpf_cnpj, :email, :telefone)'
         $stmt = $pdo->prepare('DELETE FROM clientes WHERE id = :id');
         $stmt->execute(['id' => $id]);
         return $stmt->rowCount() > 0;
-    }
-    
-     @param string $nome 
-     @return array 
+    }   
      
     public static function searchByName($nome)
     {
