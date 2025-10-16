@@ -2,7 +2,7 @@
 
 <div class="container mt-4">
     <h2>Relatório de Vendas por Período</h2>
-    <form method="POST" action="relatorio-vendas/gerar" class="row g-3 mb-4">
+    <form method="POST" action="relatorio-venda/gerar" class="row g-3 mb-4">
         <div class="col-md-4">
             <label class="form-label">Data Inicial</label>
             <input type="date" name="data_inicial" class="form-control" required>

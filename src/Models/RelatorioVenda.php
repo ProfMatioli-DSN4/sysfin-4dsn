@@ -4,7 +4,7 @@ namespace App\Models;
 use App\Core\Database;
 use PDO;
 
-class RelatorioVendas
+class RelatorioVenda
 {
     public static function listarPorPeriodo($dataInicial, $dataFinal)
     {
