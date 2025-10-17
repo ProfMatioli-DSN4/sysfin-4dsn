@@ -15,6 +15,7 @@
     <br>
     <label for="profiles">Perfis:</label>
     <select name="profiles[]" id="profiles" multiple required>
+        <?php $profiles = $user->getProfiles();?>
         <?php foreach ($profiles as $profile): ?>
             <option value="<?= $profile->id ?>" <?= $user->hasProfile($profile->id) ? 'selected' : '' ?>>
                 <?= $profile->nome ?>

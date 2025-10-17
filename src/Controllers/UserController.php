@@ -39,7 +39,7 @@ class UserController
     {
         $user = User::findById($id);
         $allProfiles = Profile::findAll();
-        require __DIR__ . '/../../Views/user/edit.php';
+        require __DIR__ . '/../Views/user/edit.php';
     }
 
     public function update($id)
@@ -64,6 +64,6 @@ class UserController
         if ($user) {
             $user->delete();
         }
-        header('Location: /users');
+        header('Location: /sysfin-4dsn/users');
     }
 }

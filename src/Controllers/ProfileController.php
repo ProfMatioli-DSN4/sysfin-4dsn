@@ -27,9 +27,10 @@ class ProfileController
 
     public function edit($params)
     {
-        $id = $params[0];
-        $profile = Profile::findById($id);
-        require __DIR__ . '/../Views/profile/edit.php';
+        // $id = $params[0];
+        // echo $id;
+        // $profile = Profile::findById($id);
+        // require __DIR__ . '/../Views/profile/edit.php';
     }
 
     public function update($params)
