@@ -18,6 +18,10 @@
             <label class="form-label" for="estoque">Estoque:</label>
             <input class="form-control" type="number" id="estoque" name="estoque_atual" value="<?= $produto->estoque_atual;?>" disabled readonly>
         </div>
+        <div class="mb-3">
+            <label class="form-label" for="estoqueMinimo">Estoque Minimo:</label>
+            <input class="form-control" type="number" id="estoqueMinimo" name="estoque_minimo" value="<?= $produto->estoque_minimo;?>">
+        </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>
