@@ -27,7 +27,8 @@
                     <td><?= htmlspecialchars($produto->estoque_atual) ?></td>
                     <td>
                         <a class="btn btn-warning btn-sm" href="produtos/editar/<?= $produto->id ?>">Editar</a>
-                        <a class="btn btn-danger btn-sm" href="produtos/excluir/<?= $produto->id ?>" onclick="return confirm('Tem certeza?')">Excluir</a>
+                        <a class="btn btn-danger btn-sm" href="produtos/excluir/<?= $produto->id ?>"
+                            onclick="return confirm('Tem certeza?')">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -35,4 +36,4 @@
     </table>
 </div>
 
-    <?php require __DIR__ . '/../layout/footer.php'; ?>
+<?php require __DIR__ . '/../layout/footer.php'; ?>
