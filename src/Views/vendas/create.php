@@ -1,3 +1,6 @@
+<?php require __DIR__ . '/../layout/header.php'; ?>
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/estilo.css">
+
 <h2>Registrar Nova Venda</h2>
 <form  id="vendaForm" method="POST" action="/vendas/finalizar">
     <label for="cliente">Cliente:</label>
@@ -13,7 +16,7 @@
      <hr>
 
   <h3>Itens da Venda</h3>
-  <div>
+  <div> 
     <select id="produto">
       <option value="">Selecione um produto...</option>
       <?php foreach ($produtos as $produto): ?>
@@ -107,3 +110,4 @@
     e.target.appendChild(hidden);
   });
 </script>
+<?php require __DIR__ . '/../layout/footer.php'; ?>

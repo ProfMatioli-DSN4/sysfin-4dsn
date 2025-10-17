@@ -1,13 +1,3 @@
-/* Folha de estilos personalizada */
-
-.bg-custom-color {
-    /* Altere o código hexadecimal aqui para a cor que desejar */
-    background-color: #8de7ef;
-}
-
-.container{
-    background-color: #8de7ef;
-}
 /* --- Variáveis de Cor (Fácil de customizar!) --- */
 :root {
     --cor-primaria: #007bff;
@@ -38,19 +28,12 @@ body {
     box-shadow: var(--sombra-card);
 }
 
-/* Estilo padrão para TÍTULOS DE PÁGINA (como 'Gestão de Clientes') */
-.container h2, .container h3 {
-    /* A cor padrão (azul do Bootstrap) será mantida */
+h2, h3 {
+    color: var(--cor-primaria);
     border-bottom: 2px solid var(--cor-fundo);
     padding-bottom: 10px;
     margin-top: 25px;
 }
-
-/* CORREÇÃO: Estilo específico para TÍTULOS DENTRO DE FORMULÁRIOS */
-form h2, form h3 {
-    color: var(--cor-texto); /* Define a cor preta apenas para os títulos do formulário */
-}
-
 
 hr {
     border: none;
@@ -160,4 +143,3 @@ input:focus, select:focus {
     color: var(--cor-sucesso);
     margin-top: 20px;
 }
-
