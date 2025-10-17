@@ -1,13 +1,13 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
+
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Relatório de Estoque</h1>
 
-    <style>
-        .baixo {
-            background-color: #ffb3b3; 
-        }
-    </style>
-
+<style>
+    table.table tr.baixo td {
+        background-color: #ffb3b3 !important; 
+    }
+</style>
 
 </div>
 
@@ -23,14 +23,11 @@
         </thead>
         <tbody>
             <?php foreach ($produtos as $p): ?>
-                <?php
-                 $estoque_minimo = $p->estoque_minimo ?? 5; //valor padrão para teste
-                ?>
-                <tr class="<?= ($p->estoque_atual < $estoque_minimo) ? 'baixo' : '' ?>">
+                <tr class="<?= ($p->estoque_atual < $p->estoque_minimo) ? 'baixo' : '' ?>">
                     <td><?= $p->id ?></td>
                     <td><?= htmlspecialchars($p->nome) ?></td> 
                     <td><?= $p->estoque_atual ?></td>
-                    <td><?= $estoque_minimo ?></td>
+                    <td><?= $p->estoque_minimo ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

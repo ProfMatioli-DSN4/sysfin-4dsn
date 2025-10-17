@@ -10,6 +10,6 @@ class RelatorioEstoqueController
 
         $produtos = Produto::getAll();
 
-        require __DIR__ . '/../Views/relatorio_estoque/index.php';
+        require __DIR__ . '/../Views/relatorio-estoque/index.php';
     }
 }
