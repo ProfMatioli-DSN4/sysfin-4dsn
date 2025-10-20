@@ -17,7 +17,6 @@ class Produto {
     public $preco_venda;
     
     public $estoque_atual;
-    public $estoque_minimo;
     
     public static function getAll(){
         $pdo = Database::getConnection();

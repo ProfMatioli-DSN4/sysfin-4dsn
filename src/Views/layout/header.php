@@ -34,7 +34,7 @@
                         <a class="nav-link" href="/sysfin-4dsn/">Compras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/sysfin-4dsn/">Vendas</a>
+                        <a class="nav-link" href="<?php echo BASE_URL;?>/vendas/novo">Vendas</a>
                     </li>
                 </ul>
 

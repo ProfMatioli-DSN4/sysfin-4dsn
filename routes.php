@@ -13,5 +13,12 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/produtos/excluir/{id:\d+}', [ 'App\Controllers\ProdutoController', 'delete']);
     $r->addRoute(['GET','POST'], '/produtos/editar/{id:\d+}', [ 'App\Controllers\ProdutoController', 'edit']);
 
+    //vendas;
+    // Exibe a tela de registro de vendas (interface)
+    $r->addRoute('GET', '/vendas/novo', ['App\Controllers\VendaController', 'create']);
+
+    // Recebe os dados da venda ao clicar em "Finalizar Venda"
+    // (a lógica completa será implementada na Tarefa 9)
+    $r->addRoute('POST', '/vendas/finalizar', ['App\Controllers\VendaController', 'store']);
 
 };
