@@ -1,10 +1,9 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/estilo.css">
 
 <h2>Registrar Nova Venda</h2>
 <form  id="vendaForm" method="POST" action="/vendas/finalizar">
-    <label for="cliente">Cliente:</label>
-    <select name="id_cliente" id="cliente" required>
+    <label  class="form-label" for="cliente">Cliente:</label>
+    <select name="id_cliente" class="form-select" id="cliente" required>
         <option value="">Selecione...</option>
         <?php foreach ($clientes as $cliente): ?>
             <option value="<?= $cliente->id ?>">
@@ -16,8 +15,10 @@
      <hr>
 
   <h3>Itens da Venda</h3>
-  <div> 
-    <select id="produto">
+
+  <div class="row">
+    <div class="col-md-3 mb-3" >
+    <select class="form-select" id="produto">
       <option value="">Selecione um produto...</option>
       <?php foreach ($produtos as $produto): ?>
         <option 
@@ -28,13 +29,19 @@
         </option>
       <?php endforeach; ?>
     </select>
-
-    <input type="number" id="quantidade" placeholder="Qtd" min="1">
-    <input type="number" id="preco" placeholder="Preço Unit." step="0.01">
-    <button type="button" id="addItem">Adicionar</button>
+</div> 
+<div class="col-md-3 mb-3">
+    <input class="form-control" type="number" id="quantidade" placeholder="Qtd" min="1"></div>
+    <div class="col-md-3 mb-3">
+    <input class="form-control" type="number" id="preco" placeholder="Preço Unit." step="0.01"></div>
+    <div class="col-md-3 ">
+    <button class="btn btn-primary" type="button" id="addItem">Adicionar</button></div>
   </div>
 
-  <table border="1" id="tabelaItens">
+
+
+<div class="table-responsive">
+  <table class="table table-striped align-middle"  id="tabelaItens">
     <thead>
       <tr>
         <th>Produto</th>
@@ -46,11 +53,11 @@
     </thead>
     <tbody></tbody>
   </table>
-
+</div>
   
   <h3>Total: R$ <span id="valorTotal">0.00</span></h3>
 
-  <button type="submit">Finalizar Venda</button>
+  <button class="btn btn-primary" type="submit">Finalizar Venda</button>
 </form>
 <script>
   const tabela = document.querySelector("#tabelaItens tbody");
@@ -84,7 +91,7 @@
       <td>${qtd}</td>
       <td>R$ ${preco.toFixed(2)}</td>
       <td>R$ ${subtotal}</td>
-      <td><button type="button" class="remove">X</button></td>
+      <td><button type="button" class="btn btn-danger">X</button></td>
     `;
     tabela.appendChild(row);
     atualizarTotal();
