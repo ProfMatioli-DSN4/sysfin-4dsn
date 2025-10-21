@@ -22,35 +22,31 @@ class ProfileController
         $profile = new Profile();
         $profile->nome = $_POST['nome'];
         $profile->save();
-        header('Location: /profiles');
+        header('Location: ' . BASE_URL . '/profiles');
     }
 
-    public function edit($params)
+    public function edit($id)
     {
-        // $id = $params[0];
-        // echo $id;
-        // $profile = Profile::findById($id);
-        // require __DIR__ . '/../Views/profile/edit.php';
+        $profile = Profile::findById($id);
+        require __DIR__ . '/../Views/profile/edit.php';
     }
 
-    public function update($params)
+    public function update($id)
     {
-        $id = $params[0];
         $profile = Profile::findById($id);
         if ($profile) {
             $profile->nome = $_POST['nome'];
             $profile->save();
         }
-        header('Location: /profiles');
+        header('Location: ' . BASE_URL . '/profiles');
     }
 
-    public function delete($params)
+    public function delete($id)
     {
-        $id = $params[0];
         $profile = Profile::findById($id);
         if ($profile) {
             $profile->delete();
         }
-        header('Location: /profiles');
+        header('Location: ' . BASE_URL . '/profiles');
     }
 }
