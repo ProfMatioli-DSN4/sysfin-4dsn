@@ -32,7 +32,7 @@ class UserController
         $profileIds = $_POST['profiles'] ?? [];
         $user->save($profileIds);
 
-        header('Location: /sysfin-4dsn/users');
+        header('Location: ' . BASE_URL . '/users');
     }
 
     public function edit($id)
@@ -55,7 +55,7 @@ class UserController
         $profileIds = $_POST['profiles'] ?? [];
         $user->save($profileIds);
 
-        header('Location: /sysfin-4dsn/users');
+        header('Location: ' . BASE_URL . '/users');
     }
 
     public function delete($id)
@@ -64,6 +64,6 @@ class UserController
         if ($user) {
             $user->delete();
         }
-        header('Location: /sysfin-4dsn/users');
+        header('Location: ' . BASE_URL . '/users');
     }
 }
