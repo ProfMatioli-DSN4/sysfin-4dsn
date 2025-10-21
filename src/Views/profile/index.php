@@ -1,27 +1,32 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 <div class="container">
-    <h1 class="mt-4">Perfis</h1>
-    <a href="profiles/create" class="btn btn-primary mb-3">Novo Perfil</a>
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($profiles as $profile): ?>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Gestão de Perfis</h1>
+        <a class="btn btn-primary" href="<?php echo BASE_URL; ?>/profiles/create">Adicionar Perfil</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
                 <tr>
-                    <td><?= $profile->id ?></td>
-                    <td><?= $profile->nome ?></td>
-                    <td>
-                        <a href="profiles/edit/<?= $profile->id ?>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="profiles/delete/<?= $profile->id ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este perfil?');">Excluir</a>
-                    </td>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($profiles as $profile): ?>
+                    <tr>
+                        <td><?= $profile->id ?></td>
+                        <td><?= htmlspecialchars($profile->nome) ?></td>
+                        <td>
+                            <a href="profiles/edit/<?= $profile->id ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="profiles/delete/<?= $profile->id ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este perfil?');">Excluir</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 <?php require __DIR__ . '/../layout/footer.php'; ?>

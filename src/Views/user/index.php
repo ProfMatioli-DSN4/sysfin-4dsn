@@ -1,19 +1,23 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 
-<h1>Usuários</h1>
-<a href="users/create" class="btn btn-primary">Novo Usuário</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Login</th>
-            <th>Ativo</th>
-            <th>Perfis</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Gestão de Usuários</h1>
+    <a class="btn btn-primary" href="<?php echo BASE_URL; ?>/users/create">Adicionar Usuário</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Login</th>
+                <th>Ativo</th>
+                <th>Perfis</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
         <?php foreach ($users as $user): ?>
             <tr>
                 <td><?= $user->id ?></td>
