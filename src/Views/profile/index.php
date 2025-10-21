@@ -17,7 +17,7 @@
                     <td><?= $profile->nome ?></td>
                     <td>
                         <a href="profiles/edit/<?= $profile->id ?>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="profiles/delete/<?= $profile->id ?>" class="btn btn-danger btn-sm">Excluir</a>
+                        <a href="profiles/delete/<?= $profile->id ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este perfil?');">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
