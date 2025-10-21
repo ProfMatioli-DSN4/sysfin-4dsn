@@ -43,7 +43,7 @@ class Profile
     public static function findAll(): array
     {
         $db = Database::getConnection();
-        $stmt = $db->query("SELECT * FROM perfis");
+        $stmt = $db->query("SELECT * FROM perfis ORDER BY id ASC");
         $perfisData = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $perfis = [];
         foreach ($perfisData as $data) {
