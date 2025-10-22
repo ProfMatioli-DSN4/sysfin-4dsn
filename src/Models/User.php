@@ -11,18 +11,20 @@ class User
     public string $nome;
     public string $login;
     public ?string $senha;
+    public ?string $senha_hash;
     public bool $ativo;
     private array $profiles = [];
 
     private static $db;
 
-    public function __construct(?int $id = null, string $nome = '', string $login = '', ?string $senha = null, bool $ativo = true)
+    public function __construct(?int $id = null, string $nome = '', string $login = '', ?string $senha = null, bool $ativo = true, ?string $senha_hash = null)
     {
         $this->id = $id;
         $this->nome = $nome;
         $this->login = $login;
         $this->senha = $senha;
         $this->ativo = $ativo;
+        $this->senha_hash = $senha_hash;
     }
 
     private static function getDb()
@@ -42,7 +44,7 @@ class User
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($data) {
-            $user = new User($data['id'], $data['nome'], $data['login'], null, $data['ativo']);
+            $user = new User($data['id'], $data['nome'], $data['login'], null, (bool)$data['ativo'], $data['senha_hash']);
             $user->loadProfiles();
             return $user;
         }
@@ -56,7 +58,7 @@ class User
         $usersData = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $users = [];
         foreach ($usersData as $data) {
-            $user = new User($data['id'], $data['nome'], $data['login'], null, $data['ativo']);
+            $user = new User($data['id'], $data['nome'], $data['login'], null, (bool)$data['ativo'], $data['senha_hash']);
             $user->loadProfiles();
             $users[] = $user;
         }
@@ -80,21 +82,23 @@ class User
 
 
         if ($this->id) {
+            $ativoInt = (int)$this->ativo;
             $sql = "UPDATE usuarios SET nome = ?, login = ?, senha_hash = ?, ativo = ? WHERE id = ?";
-            $params = [$this->nome, $this->login, $this->senha_hash, $this->ativo, $this->id];
+            $params = [$this->nome, $this->login, $this->senha_hash, $ativoInt, $this->id];
 
             if ($mainProfileId !== null) {
                 $sql = "UPDATE usuarios SET nome = ?, login = ?, senha_hash = ?, ativo = ?, id_perfil = ? WHERE id = ?";
-                $params = [$this->nome, $this->login, $this->senha_hash, $this->ativo, $mainProfileId, $this->id];
+                $params = [$this->nome, $this->login, $this->senha_hash, $ativoInt, $mainProfileId, $this->id];
             }
 
             $stmt = $conn->prepare($sql);
             $stmt->execute($params);
 
         } else {
+            $ativoInt = (int)$this->ativo;
             $sql = "INSERT INTO usuarios (nome, login, senha_hash, ativo, id_perfil) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$this->nome, $this->login, $this->senha_hash, $this->ativo, $mainProfileId]);
+            $stmt->execute([$this->nome, $this->login, $this->senha_hash, $ativoInt, $mainProfileId]);
             $this->id = $conn->lastInsertId();
         }
 
