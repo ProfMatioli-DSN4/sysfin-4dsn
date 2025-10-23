@@ -4,9 +4,15 @@
     <a class="btn btn-primary" href="<?php echo BASE_URL; ?>/clientes/novo">Adicionar Cliente</a>
 </div>
 
+<div class="mb-4">
+    <form action="<?php echo BASE_URL; ?>/clientes" method="GET" class="d-flex">
+        <input type="text" name="busca" class="form-control me-2" placeholder="Buscar por nome..." value="<?= isset($_GET['busca']) ? htmlspecialchars($_GET['busca']) : '' ?>">
+        <button type="submit" class="btn btn-info">Buscar</button>
+    </form>
+</div>
+
 <div class="table-responsive">
     <table class="table table-bordered table-hover w-100 mx-auto">
-
         <thead>
             <tr>
                 <th>ID</th>
@@ -31,4 +37,4 @@
     </table>
 </div>
 
-    <?php require __DIR__ . '/../layout/footer.php'; ?>
+<?php require __DIR__ . '/../layout/footer.php'; ?>
