@@ -19,7 +19,10 @@
             <label for="email" class="form-label">E-mail</label>
             <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($cliente->email) ?>">
         </div>
+<<<<<<< HEAD
         
+=======
+>>>>>>> 3192b648e0a8226294e5950fce97590386df2cbf
         <div class="mb-3">
             <label for="telefone" class="form-label">Telefone</label>
             <input type="text" class="form-control" id="telefone" name="telefone" value="<?= htmlspecialchars($cliente->telefone) ?>">
