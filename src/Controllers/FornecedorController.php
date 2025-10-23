@@ -62,10 +62,10 @@ class FornecedorController
     public function delete($id)
     {
         Fornecedor::delete($id);
-        header('Location: ../../fornecedor');
+        header('Location: ../../fornecedores');
     }
 
-    public function relatorio()
+    public function report()
     {
         $fornecedor = fornecedor::getAll();
         ob_start();

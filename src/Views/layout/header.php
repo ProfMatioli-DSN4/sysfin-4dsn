@@ -25,18 +25,11 @@
                             Cadastros
                         </a>
                         <ul class="dropdown-menu">
-<<<<<<< HEAD
-                            <li><a class="dropdown-item" href="#">Plano de Contas</a></li>
-                            <li><a class="dropdown-item" href="clientes">Clientes</a></li>
-                            <li><a class="dropdown-item" href="#">Produtos</a></li>
-                            <li><a class="dropdown-item" href="fornecedor">Fornecedores</a></li>
-=======
                         <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/usuarios">Usuários</a></li>
                         <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/plano-contas">Plano de Contas</a></li>
                         <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/clientes">Clientes</a></li>
                             <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/fornecedores">Fornecedores</a></li>
                             <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/produtos">Produtos</a></li>
->>>>>>> develop
                         </ul>
                     </li>
                      <li class="nav-item dropdown">

@@ -27,8 +27,8 @@
                         <td><?= htmlspecialchars($fornecedor->email) ?></td>
                         <td><?= htmlspecialchars($fornecedor->telefone) ?></td>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="<?php echo BASE_URL; ?>/fornecedor/edit/<?= $fornecedor->id ?>">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="<?php echo BASE_URL; ?>/fornecedor/delete/<?= $fornecedor->id ?>" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">Excluir</a>
+                            <a class="btn btn-warning btn-sm" href="<?php echo BASE_URL; ?>/fornecedores/editar/<?= $fornecedor->id ?>">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="<?php echo BASE_URL; ?>/fornecedores/deletar/<?= $fornecedor->id ?>" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">Excluir</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

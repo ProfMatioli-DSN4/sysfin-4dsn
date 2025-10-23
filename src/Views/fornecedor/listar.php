@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 <h2>Fornecedores</h2>
-<a href="fornecedor/create">+ Novo Fornecedor</a> |
-<a href="fornecedor/relatorio" target="_blank">📄 Exportar PDF</a>
+<a href="fornecedores/criar">+ Novo Fornecedor</a> |
+<a href="fornecedores/relatorio" target="_blank">📄 Exportar PDF</a>
 
 <form method="get" action="">
     <input type="text" name="busca" placeholder="Buscar por nome" value="<?= htmlspecialchars($_GET['busca'] ?? '') ?>">
@@ -20,8 +20,8 @@
             <td><?= htmlspecialchars($f['email']) ?></td>
             <td><?= htmlspecialchars($f['telefone']) ?></td>
             <td>
-                <a href="fornecedor/<?= $f['id'] ?>/edit">✏️ Editar</a> |
-                <a href="fornecedor/<?= $f['id'] ?>/delete" onclick="return confirm('Excluir fornecedor?')">🗑️ Excluir</a>
+                <a href="fornecedores/editar/<?= $f['id'] ?>">✏️ Editar</a> |
+                <a href="fornecedores/excluir/<?= $f['id'] ?>" onclick="return confirm('Excluir fornecedor?')">🗑️ Excluir</a>
             </td>
         </tr>
     <?php endforeach; ?>
