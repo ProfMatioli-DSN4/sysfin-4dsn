@@ -47,6 +47,9 @@
                             Relatorios
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-cliente">Cliente</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-fornecedor">Fornecedor</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-plano-conta">Plano de Contas</a></li>
                             <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-compras">Compras</a></li>
                             <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-vendas">Vendas</a></li>
                             <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-estoque">Estoque</a></li>

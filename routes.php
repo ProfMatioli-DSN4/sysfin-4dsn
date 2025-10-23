@@ -41,6 +41,8 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/vendas', ['App\Controllers\VendaController', 'index']);
     $r->addRoute(['GET', 'POST'], '/vendas/create', ['App\Controllers\VendaController', 'create']);
     $r->addRoute('GET', '/vendas/details/{id:\d+}', ['App\Controllers\VendaController', 'details']);
+    $r->addRoute('GET', '/vendas/relatorio', ['App\Controllers\VendaController', 'report']);
+  
     // Estoque
     $r->addRoute('GET', '/relatorio-estoque', ['App\Controllers\RelatorioEstoqueController', 'index']);
 
