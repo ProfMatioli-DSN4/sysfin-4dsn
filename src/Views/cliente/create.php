@@ -3,7 +3,7 @@
 <div class="container mt-4">
     <h1 class="mb-4">Adicionar Novo Cliente</h1>
 
-    <form action="<?php echo BASE_URL; ?>/clientes/novo" method="POST">
+    <form action="<?php echo BASE_URL; ?>/clientes/novo" method="post">
         
         <div class="mb-3">
             <label for="nome" class="form-label">Nome Completo</label>

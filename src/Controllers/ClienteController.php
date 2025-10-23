@@ -6,7 +6,13 @@ class ClienteController
 {
     public function index()
     {
+    if (isset($_GET['busca']) && !empty($_GET['busca'])) {
+        $termoBusca = $_GET['busca'];
+        $clientes = Cliente::searchByName($termoBusca);
+    } else {
+ 
         $clientes = Cliente::getAll();
+    }
         require __DIR__ . '/../Views/cliente/index.php';
     }
     public function create()
@@ -18,7 +24,7 @@ class ClienteController
             $cliente->email = $_POST['email'];
             $cliente->telefone = $_POST['telefone'];
             $cliente->save();
-            header('Location: /clientes');
+            header('Location: '. BASE_URL .'/clientes');
         } else {
             require __DIR__ . '/../Views/cliente/create.php';
         }
@@ -32,7 +38,7 @@ class ClienteController
             $cliente->email = $_POST['email'];
             $cliente->telefone = $_POST['telefone'];
             $cliente->save();
-            header('Location: /clientes');
+            header('Location: '. BASE_URL .'/clientes');
         } else {
             require __DIR__ . '/../Views/cliente/edit.php';
         }
@@ -40,6 +46,6 @@ class ClienteController
     public function delete($id)
     {
         Cliente::delete($id);
-        header('Location: /clientes');
+        header('Location:'. BASE_URL .' /clientes');
     }
 }
