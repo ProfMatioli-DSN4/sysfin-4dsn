@@ -16,7 +16,18 @@
         </div>
     </form>
 
+    <?php if (isset($erroData)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $erroData ?>
+        </div>
+    <?php endif; ?>
+
     <?php if (isset($vendas)): ?>
+        <div class="alert alert-info mb-3">
+            <strong>Período:</strong> 
+            <?= date('d/m/Y', strtotime($dataInicial)) ?> até <?= date('d/m/Y', strtotime($dataFinal)) ?>
+        </div>
+
         <table class="table table-striped">
             <thead>
                 <tr>

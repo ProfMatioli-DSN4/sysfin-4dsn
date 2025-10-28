@@ -15,6 +15,13 @@ class RelatorioVendaController
     $dataFinal   = $_POST['data_final'] ?? null;
 
     if ($dataInicial && $dataFinal) {
+        // Validação: data inicial não pode ser maior que data final
+        if ($dataInicial > $dataFinal) {
+            $erroData = "A data inicial não pode ser maior que a data final.";
+            require __DIR__ . '/../Views/relatorio-venda/venda_por_periodo.php';
+            return;
+        }
+
         $vendas = RelatorioVenda::listarPorPeriodo($dataInicial, $dataFinal);
 
         $totalVendas = count($vendas);
