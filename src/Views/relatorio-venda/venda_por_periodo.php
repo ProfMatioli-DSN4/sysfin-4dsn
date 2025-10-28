@@ -1,7 +1,8 @@
-<?php require __DIR__ . '/layout/header.php'; ?>
+<?php require __DIR__ . '/../layout/header.php'; ?>
 
 <div class="container mt-4">
     <h2>Relatório de Vendas por Período</h2>
+
     <form method="POST" action="relatorio-venda/gerar" class="row g-3 mb-4">
         <div class="col-md-4">
             <label class="form-label">Data Inicial</label>
@@ -16,7 +17,7 @@
         </div>
     </form>
 
-    <?php if (isset($vendas)): ?>
+    <?php if (!empty($vendas)): ?>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -38,6 +39,11 @@
 
         <h5 class="mt-3">Número total de vendas: <?= $totalVendas ?></h5>
         <h5>Valor total vendido: R$ <?= number_format($valorTotal, 2, ',', '.') ?></h5>
+    <?php elseif (isset($_POST['data_inicial'])): ?>
+        <div class="alert alert-warning mt-3">
+            Nenhuma venda encontrada no período selecionado.
+        </div>
     <?php endif; ?>
 </div>
-<?php require __DIR__ . '/layout/footer.php'; ?>
+
+<?php require __DIR__ . '/../layout/footer.php'; ?>
