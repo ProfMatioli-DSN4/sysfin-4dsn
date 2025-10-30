@@ -24,7 +24,7 @@ class CompraController
     {
         // Esta é a lógica da Tarefa #7, apenas exibe os dados recebidos, implementar a persistência no banco de dados aqui.
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            header('Location: ' . BASE_URL . '/compras/novo');
+            header('Location: ' . BASE_URL . '/compras');
             exit;
         }
 

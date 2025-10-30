@@ -56,7 +56,7 @@
                     <input type="number" class="form-control" id="valor_unitario_add" name="valor_unitario_add" step="0.01" min="0.01" value="0.00" required>
                 </div>
                 <div class="col-md-1">
-                    <button type="submit" class="btn btn-success w-100" name="adicionar_item" value="1">Add</button>
+                    <button class="btn btn-success w-100" name="adicionar_item">Add</button>
                 </div>
             </div>
         </form>
