@@ -28,7 +28,7 @@ class FornecedorController
             $fornecedor->email = $_POST['email'] ?? '';
             $fornecedor->telefone = $_POST['telefone'] ?? '';
             $fornecedor->save();
-            header('Location: ../fornecedor');
+            header('Location: ../fornecedores');
         } else {
             $fornecedor = null;
             require __DIR__ . '/../Views/fornecedor/form.php';
@@ -52,7 +52,7 @@ class FornecedorController
             $fornecedor->email = $_POST['email'] ?? '';
             $fornecedor->telefone = $_POST['telefone'] ?? '';
             $fornecedor->save();
-            header('Location: ../../fornecedor');
+            header('Location: ../../fornecedores');
         } else {
             $fornecedor = Fornecedor::find($id);
             require __DIR__ . '/../Views/fornecedor/form.php';
