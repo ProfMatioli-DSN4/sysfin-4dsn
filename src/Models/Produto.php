@@ -17,7 +17,6 @@ class Produto {
     public $preco_venda;
     
     public $estoque_atual;
-
     public $estoque_minimo;
     
     public static function getAll(){
@@ -40,26 +39,28 @@ class Produto {
             // Atualizar 
             $stmt = $pdo->prepare(
                 'UPDATE produtos SET nome = :nome, descricao = :descricao, 
-                preco_venda = :preco_venda, estoque_atual = :estoque_atual WHERE id = :id'
+                preco_venda = :preco_venda, estoque_atual = :estoque_atual, estoque_minimo = :estoque_minimo WHERE id = :id'
             );
             $stmt->execute([
                 'id' => $this->id,
                 'nome' => $this->nome,
                 'descricao' => $this->descricao,
                 'preco_venda' => $this->preco_venda,
-                'estoque_atual' => $this->estoque_atual
+                'estoque_atual' => $this->estoque_atual,
+                'estoque_minimo' => $this->estoque_minimo
             ]);
         } else {
             // Inserir 
             $stmt = $pdo->prepare(
-                'INSERT INTO produtos (nome, descricao, preco_venda, estoque_atual) 
-VALUES (:nome, :descricao, :preco_venda, :estoque_atual)'
+                'INSERT INTO produtos (nome, descricao, preco_venda, estoque_atual, estoque_minimo) 
+VALUES (:nome, :descricao, :preco_venda, :estoque_atual, :estoque_minimo)'
             );
             $stmt->execute([
                 'nome' => $this->nome,
                 'descricao' => $this->descricao,
                 'preco_venda' => $this->preco_venda,
-                'estoque_atual' => $this->estoque_atual
+                'estoque_atual' => $this->estoque_atual,
+                'estoque_minimo' => $this->estoque_minimo
             ]);
             $this->id = $pdo->lastInsertId();
         }
