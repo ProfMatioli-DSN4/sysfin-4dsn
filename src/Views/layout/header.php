@@ -20,22 +20,44 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Cadastros
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Plano de Contas</a></li>
-                            <li><a class="dropdown-item" href="clientes">Clientes</a></li>
-                            <li><a class="dropdown-item" href="#">Produtos</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/usuarios">Usuários</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/plano-contas">Plano de Contas</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/clientes">Clientes</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/fornecedores">Fornecedores</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/produtos">Produtos</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sysfin-4dsn/">Compras</a>
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Lançamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/compras">Compras</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/vendas">Vendas</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/lancamento-manual-caixa">Lançamentos Manuais no Caixa</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sysfin-4dsn/">Vendas</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Relatorios
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-cliente">Cliente</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-fornecedor">Fornecedor</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-produto">Produto</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-plano-conta">Plano de Contas</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-compras">Compras</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-vendas">Vendas</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-estoque">Estoque</a></li>
+                            <li><a class="dropdown-item" href="<?php echo BASE_URL;?>/relatorio-movimento-caixa">Movimento de Caixa</a></li>
+                        </ul>
                     </li>
+
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
