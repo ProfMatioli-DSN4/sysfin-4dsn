@@ -2,6 +2,8 @@
 // App/Controllers/ClienteController.php 
 namespace App\Controllers;
 use App\Models\Cliente;
+use Dompdf\Dompdf;
+
 class ClienteController
 {
     public function index()
@@ -48,4 +50,24 @@ class ClienteController
         Cliente::delete($id);
         header('Location:'. BASE_URL .' /clientes');
     }
+
+    public function report()
+    {
+        $clientes = Cliente::getAll();
+        ob_start();
+        require __DIR__ . '/../Views/cliente/relatorio-cliente.php';
+        $html = ob_get_clean();
+        require_once __DIR__ . '/../../vendor/autoload.php';
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: inline; filename="clientes_relatorio.pdf"');
+        
+        echo $dompdf->output();
+        
+        exit;
+    }
+
 }

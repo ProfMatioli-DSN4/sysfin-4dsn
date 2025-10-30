@@ -9,7 +9,7 @@ return function (FastRoute\RouteCollector $r) {
   $r->addRoute(['GET', 'POST'], '/clientes/novo', ['App\Controllers\ClienteController', 'create']);
   $r->addRoute(['GET', 'POST'], '/clientes/editar/{id:\d+}', ['App\Controllers\ClienteController', 'edit']);
   $r->addRoute('GET', '/clientes/excluir/{id:\d+}', ['App\Controllers\ClienteController', 'delete']);
-  $r->addRoute('GET', '/clientes/relatorio', ['App\Controllers\ClienteController', 'report']);
+  $r->addRoute('GET', '/clientes/relatorio-cliente', ['App\Controllers\ClienteController', 'report']);
 
     //fornecedores;
     $r->addRoute('GET', '/fornecedores', ['App\Controllers\FornecedorController', 'index']);
