@@ -14,6 +14,7 @@
                 <th>Descrição</th>
                 <th>Preço de Venda</th>
                 <th>Estoque</th>
+                <th>Estoque Mínimo</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                     <td><?= htmlspecialchars($produto->descricao) ?></td>
                     <td>R$ <?= htmlspecialchars($produto->preco_venda) ?></td>
                     <td><?= htmlspecialchars($produto->estoque_atual) ?></td>
+                    <td><?= htmlspecialchars($produto->estoque_minimo) ?></td>
                     <td>
                         <a class="btn btn-warning btn-sm" href="produtos/editar/<?= $produto->id ?>">Editar</a>
                         <a class="btn btn-danger btn-sm" href="produtos/excluir/<?= $produto->id ?>" onclick="return confirm('Tem certeza?')">Excluir</a>
