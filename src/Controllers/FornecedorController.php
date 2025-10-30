@@ -10,7 +10,7 @@ class FornecedorController
     {
         $busca = $_GET['busca'] ?? null;
         $fornecedor = Fornecedor::getAll($busca);
-        require __DIR__ . '/../Views/fornecedor/listar.php';
+        require __DIR__ . '/../Views/fornecedor/index.php';
     }
 
     public function create()
