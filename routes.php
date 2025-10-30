@@ -53,8 +53,8 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/profiles/delete/{id:\d+}', ['App\Controllers\ProfileController', 'delete']);
 
     //users
-    $r->addRoute('GET', '/users', ['App\Controllers\UserController', 'index']);
-    $r->addRoute(['GET', 'POST'], '/users/criar', ['App\Controllers\UserController', 'create']);
-    $r->addRoute(['GET', 'POST'], '/users/editar/{id:\d+}', ['App\Controllers\UserController', 'edit']);
-    $r->addRoute('GET', '/users/delete/{id:\d+}', ['App\Controllers\UserController', 'delete']);
+    $r->addRoute('GET', '/usuarios', ['App\Controllers\UserController', 'index']);
+    $r->addRoute(['GET', 'POST'], '/usuarios/criar', ['App\Controllers\UserController', 'create']);
+    $r->addRoute(['GET', 'POST'], '/usuarios/editar/{id:\d+}', ['App\Controllers\UserController', 'edit']);
+    $r->addRoute('GET', '/usuarios/delete/{id:\d+}', ['App\Controllers\UserController', 'delete']);
 };
