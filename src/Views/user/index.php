@@ -2,7 +2,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Gestão de Usuários</h1>
-    <a class="btn btn-primary" href="<?php echo BASE_URL; ?>/users/create">Adicionar Usuário</a>
+    <a class="btn btn-primary" href="<?php echo BASE_URL; ?>/usuarios/criar">Adicionar Usuário</a>
 </div>
 
 <div class="table-responsive">
@@ -33,8 +33,8 @@
                     ?>
                 </td>
                 <td>
-                    <a href="users/edit/<?= $user->id ?>" class="btn btn-sm btn-warning">Editar</a>
-                    <a href="users/delete/<?= $user->id ?>" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir este usuário?');">Excluir</a>
+                    <a href="usuarios/editar/<?= $user->id ?>" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="usuarios/delete/<?= $user->id ?>" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir este usuário?');">Excluir</a>
                 </td>
             </tr>
         <?php endforeach; ?>
