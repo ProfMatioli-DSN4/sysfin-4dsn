@@ -70,4 +70,27 @@ VALUES (:nome, :descricao, :preco_venda, :estoque_atual)'
         $stmt->execute(['id' => $id]);
         return $stmt->rowCount() > 0;
     }
+
+    /**
+     * Tarefa 12: (estoque_atual <= estoque_minimo)
+     * @return int
+     */
+    public function countEstoqueBaixo(): int
+    {
+        // Pega a conexão do banco de dados, igual os outros métodos fazem
+        $pdo = Database::getConnection(); 
+        
+        // ATENÇÃO: Confirme se sua tabela 'produtos' tem a coluna 'estoque_minimo'.
+        // Se não tiver, e a regra for outra (ex: < 10), mude a consulta.
+        // Vou assumir que a coluna 'estoque_minimo' existe.
+        $sql = "SELECT COUNT(id) AS total_baixo
+                FROM produtos 
+                WHERE estoque_atual <= estoque_minimo";
+        
+        $stmt = $pdo->query($sql);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Retorna o total encontrado (ou 0 se não achar nada)
+        return (int) ($resultado['total_baixo'] ?? 0);
+    }
 }
