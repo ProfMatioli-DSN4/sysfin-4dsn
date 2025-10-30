@@ -1,22 +1,22 @@
 <?php
-// Inclui o cabeçalho
-// A variável $titulo (definida no Controller) deve ser usada dentro do header.php
+
+
 require __DIR__ . '/../layout/header.php';
 ?>
 
 <style>
     .card-value {
-        font-size: 2.25rem; /* Tamanho grande para o valor */
+        font-size: 2.25rem;
         font-weight: 700;
     }
     .text-positive {
-        color: #198754; /* Verde do Bootstrap (success) */
+        color: #198754;
     }
     .text-negative {
-        color: #dc3545; /* Vermelho do Bootstrap (danger) */
+        color: #dc3545;
     }
     .text-alert {
-        color: #ffc107; /* Amarelo do Bootstrap (warning) */
+        color: #ffc107;
     }
 </style>
 
@@ -121,6 +121,6 @@ require __DIR__ . '/../layout/header.php';
     </div>
     </div>
 <?php
-// Inclui o rodapé
+
 require __DIR__ . '/../layout/footer.php';
 ?>
