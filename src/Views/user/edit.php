@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/../layout/header.php'; ?>
 <div class="container">
     <h1 class="mt-4">Editar Usuário</h1>
-    <form action="<?php echo BASE_URL; ?>/users/update/<?= $user->id ?>" method="POST">
+    <form action="<?php echo BASE_URL; ?>/usuario/editar/<?= $user->id ?>" method="POST">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
             <input type="text" name="nome" id="nome" class="form-control" value="<?= htmlspecialchars($user->nome) ?>" required>
