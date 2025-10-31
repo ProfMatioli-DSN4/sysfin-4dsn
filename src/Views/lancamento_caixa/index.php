@@ -6,7 +6,7 @@
             <p class="success-message">Lançamento salvo com sucesso!</p>
         <?php endif; ?>
 
-        <form action="index.php?action=salvar" method="POST">
+        <form action="<?php echo BASE_URL; ?>/lancamento-manual-caixa/salvar" method="post">
 
             <div class="form-group">
                 <label for="data_lancamento">Data do Lançamento</label>
@@ -15,12 +15,12 @@
 
             <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <input type="text" id="descricao" name="descricao" placeholder="Ex: Pagamento da conta de luz" required>
+                <input type="text" id="descricao" name="descricao" placeholder="" required>
             </div>
 
             <div class="form-group">
                 <label for="valor">Valor (R$)</label>
-                <input type="number" id="valor" name="valor" step="0.01" min="0.01" placeholder="150.75" required>
+                <input type="number" id="valor" name="valor" step="0.01" min="0.01" placeholder="" required>
             </div>
 
             <div class="form-group">
@@ -35,12 +35,13 @@
                 <label for="plano_contas_id">Plano de Contas (Categoria)</label>
                 <select id="plano_contas_id" name="plano_contas_id" required>
                     <option value="">-- Selecione uma categoria --</option>
+                    <option value="teste">teste</option>
                     <?php
                         // Loop para popular o seletor com os dados do controller
-                        while ($row = $planosDeContas->fetch(PDO::FETCH_ASSOC)) {
-                            extract($row);
-                            echo "<option value='{$id}'>{$descricao} ({$tipo})</option>";
-                        }
+                        // while ($row = $planosDeContas->fetch(PDO::FETCH_ASSOC)) {
+                        //     extract($row);
+                        //     echo "<option value='{$id}'>{$descricao} ({$tipo})</option>";
+                        // }
                     ?>
                 </select>
             </div>

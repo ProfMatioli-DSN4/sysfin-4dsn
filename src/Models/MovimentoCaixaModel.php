@@ -1,6 +1,6 @@
 <?php
 
-class MovimentoCaixaModel {
+class LancamentoManualCaixa{
     // Propriedades que espelham as colunas da tabela
     public $id;
     public $data_lancamento;
@@ -19,7 +19,7 @@ class MovimentoCaixaModel {
      * Salva o lançamento atual no banco de dados.
      * Retorna true em caso de sucesso, false em caso de falha.
      */
-    public function salvar() {
+    public function save() {
         $sql = "INSERT INTO movimento_caixa (data_lancamento, descricao, valor, tipo, id_plano_contas)
                 VALUES (:data, :descricao, :valor, :tipo, :id_plano_contas)";
 
