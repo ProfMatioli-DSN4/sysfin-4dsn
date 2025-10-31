@@ -33,7 +33,7 @@
 
             <div class="form-group">
                 <label for="plano_contas_id">Plano de Contas (Categoria)</label>
-                <select id="plano_contas_id" name="plano_contas_id" required>
+                <select id="plano_contas_id" name="id_plano_contas" required> 
                     <option value="">-- Selecione uma categoria --</option>
                     <option value="teste">teste</option>
                     <?php
