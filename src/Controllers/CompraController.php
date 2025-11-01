@@ -17,13 +17,6 @@ class CompraController
         $produtos = Produto::getAll();
         $fornecedores = Fornecedor::getAll();
 
-        // Simulação de fornecedores (sem model ainda)
-        //$fornecedores = [
-        //    (object)['id' => 1, 'nome' => 'Fornecedor A'],
-        //    (object)['id' => 2, 'nome' => 'Fornecedor B'],
-        //    (object)['id' => 3, 'nome' => 'Fornecedor C'],
-        //];
-
         if (!isset($_SESSION['itens_compra'])) {
             $_SESSION['itens_compra'] = [];
         }
