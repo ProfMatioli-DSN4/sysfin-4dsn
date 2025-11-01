@@ -3,7 +3,7 @@
 namespace App\Models;
 use App\Core\Database;
 use PDO;
-use Dompdf\Dompdf;
+
 class Cliente
 {
     public $id;
@@ -11,12 +11,14 @@ class Cliente
     public $cpf_cnpj;
     public $email;
     public $telefone;
+
     public static function getAll()
     {
         $pdo = Database::getConnection();
         $stmt = $pdo->query('SELECT * FROM clientes ORDER BY nome');
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+    
     public static function getById($id)
     {
         $pdo = Database::getConnection();
