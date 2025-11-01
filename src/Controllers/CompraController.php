@@ -15,14 +15,14 @@ class CompraController
     public function index()
     {
         $produtos = Produto::getAll();
-        //$fornecedores = Fornecedor::getAll();
+        $fornecedores = Fornecedor::getAll();
 
         // Simulação de fornecedores (sem model ainda)
-        $fornecedores = [
-            (object)['id' => 1, 'nome' => 'Fornecedor A'],
-            (object)['id' => 2, 'nome' => 'Fornecedor B'],
-            (object)['id' => 3, 'nome' => 'Fornecedor C'],
-        ];
+        //$fornecedores = [
+        //    (object)['id' => 1, 'nome' => 'Fornecedor A'],
+        //    (object)['id' => 2, 'nome' => 'Fornecedor B'],
+        //    (object)['id' => 3, 'nome' => 'Fornecedor C'],
+        //];
 
         if (!isset($_SESSION['itens_compra'])) {
             $_SESSION['itens_compra'] = [];
@@ -33,12 +33,16 @@ class CompraController
                 $this->adicionarItem();
             } elseif (isset($_POST['limpar_itens'])) {
                 $this->limparItens();
+            } elseif (isset($_POST['selecionar_fornecedor'])) {
+                $this->selecionarFornecedor();
             }
         }
 
         $total = array_sum(array_column($_SESSION['itens_compra'], 'subtotal'));
 
         $itens = $_SESSION['itens_compra'];
+        $fornecedorSelecionado = $_SESSION['fornecedor_compra'] ?? null;
+
         require __DIR__ . '/../Views/compra/create.php';
     }
 
@@ -50,28 +54,47 @@ class CompraController
 
         if ($produto_id && $quantidade > 0 && $valor_unitario > 0) {
             $produto = Produto::getById($produto_id);
-            $_SESSION['itens_compra'][] = [
-                'id' => $produto->id,
-                'nome' => $produto->nome,
-                'quantidade' => $quantidade,
-                'valor_unitario' => $valor_unitario,
-                'subtotal' => $quantidade * $valor_unitario
-            ];
+
+            if ($produto) {
+                $produto = (array) $produto;
+                $_SESSION['itens_compra'][] = [
+                    'id' => $produto['id'],
+                    'nome' => $produto['nome'],
+                    'quantidade' => $quantidade,
+                    'valor_unitario' => $valor_unitario,
+                    'subtotal' => $quantidade * $valor_unitario
+                ];
+            }
         }
     }
 
     private function limparItens()
     {
         $_SESSION['itens_compra'] = [];
+        unset($_SESSION['fornecedor_compra']);
+    }
+
+    private function selecionarFornecedor()
+    {
+        $fornecedor_id = $_POST['fornecedor_id'] ?? null;
+
+        if ($fornecedor_id) {
+            $fornecedor = Fornecedor::find($fornecedor_id);
+
+            if ($fornecedor) {
+                $_SESSION['fornecedor_compra'] = $fornecedor;
+            }
+        }
     }
 
     public function create()
     {
         // Lógica da Tarefa #7 (ainda não implementada)
-        
         if (!empty($_SESSION['itens_compra'])) {
             $_SESSION['itens_compra'] = [];
         }
+
+        unset($_SESSION['fornecedor_compra']);
 
         header('Location: ' . BASE_URL . '/compras');
         exit;

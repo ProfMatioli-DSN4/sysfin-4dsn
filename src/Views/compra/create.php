@@ -11,11 +11,14 @@
                 <div class="card-header">Informações da Compra</div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="fornecedor_id" class="form-label">Fornecedor:</label>
+                    <label for="fornecedor_id" class="form-label">Fornecedor:</label>
                         <select class="form-select" id="fornecedor_id" name="fornecedor_id" required>
                             <option value="">Selecione um fornecedor</option>
                             <?php foreach ($fornecedores as $fornecedor): ?>
-                                <option value="<?= $fornecedor->id ?>"><?= htmlspecialchars($fornecedor->nome) ?></option>
+                                <option value="<?= htmlspecialchars($fornecedor['id']) ?>"
+                                    <?= isset($fornecedorSelecionado) && $fornecedorSelecionado['id'] == $fornecedor['id'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($fornecedor['nome'] ?? 'Sem nome') ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
