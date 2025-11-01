@@ -37,19 +37,16 @@
 <script type="text/javascript">
     $(document).ready(function(){
         
-        // --- MÁSCARA DE TELEFONE ---
         $('#telefone').mask('(00) 00000-0000');
         
-        // --- MÁSCARA DE CPF/CNPJ (DINÂMICA) ---
         var options = {
             onKeyPress: function(val, e, field, options) {
-                const plain = val.replace(/\D/g, ''); // Remove tudo que não for dígito
-                // Troca a máscara dinamicamente
+                const plain = val.replace(/\D/g, ''); 
+                
                 field.mask(plain.length > 11 ? '00.000.000/0000-00' : '000.000.000-009', options);
             }
         };
         
-        // Aplica a máscara inicial de CPF
         $('#cpf_cnpj').mask('000.000.000-009', options);
     });
 </script>
