@@ -1,10 +1,17 @@
-<?php require __DIR__ . '/../layout/header.php'; ?>
+<?php 
+
+require __DIR__ . '/../layout/header.php';
+use App\Models\Fornecedor;
+
+?>
 <div class="col-md-6">
     <h2><?= $fornecedor ? "Editar" : "Novo" ?> fornecedor</h2>
 
     <?php if (!empty($error)): ?>
-        <div style="color: red;"><?= $error ?></div>
+        <div style="
+            color: red;"><?= $error ?></div>
     <?php endif; ?>
+
 
     <form method="post" action="">
         <input type="hidden" name="id" value="<?= $fornecedor['id'] ?? '' ?>">

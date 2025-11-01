@@ -16,13 +16,19 @@ class FornecedorController
     public function create()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $cnpj = preg_replace('/\D/', '', $_POST['cnpj'] ?? '');
+            $fornecedor = new Fornecedor();
+            $cnpj = $_POST['cnpj'];
+            if($fornecedor->validCnpjExists($cnpj)) {
+                $error = "CNPJ já cadastrado";
+                require __DIR__ . '/../Views/fornecedor/form.php';
+                return;
+            }
+
             if (strlen($cnpj) !== 14) {
                 $error = 'CNPJ inválido. Deve conter 14 dígitos.';
                 require __DIR__ . '/../Views/fornecedor/form.php';
                 return;
             }
-            $fornecedor = new Fornecedor();
             $fornecedor->nome = $_POST['nome'] ?? '';
             $fornecedor->cnpj = $cnpj;
             $fornecedor->email = $_POST['email'] ?? '';
