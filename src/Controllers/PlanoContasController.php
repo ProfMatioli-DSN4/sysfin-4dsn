@@ -11,7 +11,10 @@ class PlanoContasController
     {
         $contas = PlanoContas::getAllOrdered(); 
         
+        // CORREÇÃO: INCLUIR O LAYOUT (HEADER E FOOTER)
+        require __DIR__ . '/../Views/layout/header.php'; 
         require __DIR__ . '/../Views/plano_contas/index.php'; 
+        require __DIR__ . '/../Views/layout/footer.php'; 
     }
 
     
@@ -31,7 +34,10 @@ class PlanoContasController
         } else {
             
             $conta = new PlanoContas(); 
+            // CORREÇÃO: INCLUIR O LAYOUT TAMBÉM NO FORM
+            require __DIR__ . '/../Views/layout/header.php'; 
             require __DIR__ . '/../Views/plano_contas/form.php'; 
+            require __DIR__ . '/../Views/layout/footer.php'; 
         }
     }
 
@@ -57,12 +63,15 @@ class PlanoContasController
             }
         } else {
             
+            // CORREÇÃO: INCLUIR O LAYOUT TAMBÉM NO FORM
+            require __DIR__ . '/../Views/layout/header.php';
             require __DIR__ . '/../Views/plano_contas/form.php';
+            require __DIR__ . '/../Views/layout/footer.php';
         }
     }
 
     
-    public function delete($id):void
+    public function delete($id) // CORRIGIDO: Removido o ':void'
         {
         if (PlanoContas::canDelete($id)) {
             PlanoContas::delete($id);

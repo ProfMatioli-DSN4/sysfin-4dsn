@@ -19,11 +19,12 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/fornecedores/relatorio', ['App\Controllers\FornecedorController', 'report']);
 
     //plano de contas;
-    $r->addRoute('GET', '/plano-contas', [ 'App\Controllers\PlanoContaController', 'index']);
-    $r->addRoute(['GET', 'POST'], '/plano-contas/criar', ['App\Controllers\PlanoContaController', 'create']);
-    $r->addRoute(['GET', 'POST'], '/plano-contas/editar/{id:\d+}', ['App\Controllers\PlanoContaController', 'edit']);
-    $r->addRoute('POST', '/plano-contas/excluir/{id:\d+}', ['App\Controllers\PlanoContaController', 'delete']);
-    $r->addRoute('GET', '/plano-contas/relatorio', ['App\Controllers\PlanoContaController', 'report']);
+    // CORRIGIDO: PlanoContaController -> PlanoContasController
+    $r->addRoute('GET', '/plano-contas', [ 'App\Controllers\PlanoContasController', 'index']);
+    $r->addRoute(['GET', 'POST'], '/plano-contas/criar', ['App\Controllers\PlanoContasController', 'create']);
+    $r->addRoute(['GET', 'POST'], '/plano-contas/editar/{id:\d+}', ['App\Controllers\PlanoContasController', 'edit']);
+    $r->addRoute('POST', '/plano-contas/excluir/{id:\d+}', ['App\Controllers\PlanoContasController', 'delete']);
+    $r->addRoute('GET', '/plano-contas/relatorio', ['App\Controllers\PlanoContasController', 'report']);
 
     //compras
     $r->addRoute(['GET', 'POST'], '/compras', ['App\Controllers\CompraController', 'report']);

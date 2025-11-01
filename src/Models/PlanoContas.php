@@ -15,7 +15,8 @@ class PlanoContas
     public static function getAllOrdered()
     {
         $pdo = Database::getConnection();
-        $stmt = $pdo->query('SELECT * FROM plano_contas ORDER BY tipo, descricao');
+        // CORREÇÃO: plano_contas -> plano_de_contas
+        $stmt = $pdo->query('SELECT * FROM plano_de_contas ORDER BY tipo, descricao');
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
@@ -24,7 +25,8 @@ class PlanoContas
     public static function getById($id) 
     {
         $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('SELECT * FROM plano_contas WHERE id = :id');
+        // CORREÇÃO: plano_contas -> plano_de_contas
+        $stmt = $pdo->prepare('SELECT * FROM plano_de_contas WHERE id = :id');
         $stmt->execute(['id' => $id]);
         return $stmt->fetchObject(self::class);
     }
@@ -44,7 +46,8 @@ class PlanoContas
         if ($this->id) {
             
             $stmt = $pdo->prepare(
-                'UPDATE plano_contas SET descricao = :descricao, tipo = :tipo WHERE id = :id'
+                // CORREÇÃO: plano_contas -> plano_de_contas
+                'UPDATE plano_de_contas SET descricao = :descricao, tipo = :tipo WHERE id = :id'
             );
             $stmt->execute([
                 'id' => $this->id,
@@ -54,7 +57,8 @@ class PlanoContas
         } else {
             
             $stmt = $pdo->prepare(
-                'INSERT INTO plano_contas (descricao, tipo) VALUES (:descricao, :tipo)'
+                // CORREÇÃO: plano_contas -> plano_de_contas
+                'INSERT INTO plano_de_contas (descricao, tipo) VALUES (:descricao, :tipo)'
             );
             $stmt->execute([
                 'descricao' => $this->descricao,
@@ -69,7 +73,8 @@ class PlanoContas
     public static function delete($id)
     {
         $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('DELETE FROM plano_contas WHERE id = :id');
+        // CORREÇÃO: plano_contas -> plano_de_contas
+        $stmt = $pdo->prepare('DELETE FROM plano_de_contas WHERE id = :id');
         $stmt->execute(['id' => $id]);
         return $stmt->rowCount() > 0;
     }
