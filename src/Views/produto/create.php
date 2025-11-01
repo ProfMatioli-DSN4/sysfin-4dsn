@@ -12,11 +12,15 @@
         </div>
         <div class="mb-3">
             <label class="form-label" for="precoVenda">Preço de Venda:</label>
-            <input class="form-control" type="number" id="precoVenda" name="preco_venda" required>
+            <input class="form-control" type="number" step=".01" id="precoVenda" name="preco_venda" required>
         </div>
         <div class="mb-3">
             <label class="form-label" for="estoque">Estoque:</label>
             <input class="form-control" type="number" id="estoque" name="estoque_atual" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="estoqueMinimo">Estoque Minimo:</label>
+            <input class="form-control" type="number" id="estoqueMinimo" name="estoque_minimo" required>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
