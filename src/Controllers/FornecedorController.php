@@ -18,17 +18,21 @@ class FornecedorController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fornecedor = new Fornecedor();
             $cnpj = $_POST['cnpj'];
+
             if($fornecedor->validCnpjExists($cnpj)) {
                 $error = "CNPJ já cadastrado";
+                $fornecedor = null;
                 require __DIR__ . '/../Views/fornecedor/form.php';
                 return;
             }
 
-            if (strlen($cnpj) !== 14) {
+            if (strlen(preg_replace('/\D/', '', $cnpj ?? '')) !== 14) {
                 $error = 'CNPJ inválido. Deve conter 14 dígitos.';
+                $fornecedor = null;
                 require __DIR__ . '/../Views/fornecedor/form.php';
                 return;
             }
+
             $fornecedor->nome = $_POST['nome'] ?? '';
             $fornecedor->cnpj = $cnpj;
             $fornecedor->email = $_POST['email'] ?? '';
@@ -44,14 +48,16 @@ class FornecedorController
     public function edit($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $cnpj = preg_replace('/\D/', '', $_POST['cnpj'] ?? '');
-            if (strlen($cnpj) !== 14) {
+            $fornecedor = new Fornecedor();
+            $cnpj = $_POST['cnpj'];
+
+            if (strlen(preg_replace('/\D/', '', $cnpj ?? '')) !== 14) {
                 $error = 'CNPJ inválido. Deve conter 14 dígitos.';
                 $fornecedor = Fornecedor::find($id);
                 require __DIR__ . '/../Views/fornecedor/form.php';
                 return;
             }
-            $fornecedor = new Fornecedor();
+
             $fornecedor->id = $id;
             $fornecedor->nome = $_POST['nome'] ?? '';
             $fornecedor->cnpj = $cnpj;
