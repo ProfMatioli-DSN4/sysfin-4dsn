@@ -4,7 +4,7 @@ namespace App\Models;
 use App\Core\Database;
 use PDO;
 
-// Nome, Descrição, Preço de Venda e Estoque Inicial
+
 
 class Produto {
 
@@ -36,7 +36,7 @@ class Produto {
     {
         $pdo = Database::getConnection();
         if ($this->id) {
-            // Atualizar 
+            
             $stmt = $pdo->prepare(
                 'UPDATE produtos SET nome = :nome, descricao = :descricao, 
                 preco_venda = :preco_venda, estoque_atual = :estoque_atual, estoque_minimo = :estoque_minimo WHERE id = :id'
@@ -50,7 +50,7 @@ class Produto {
                 'estoque_minimo' => $this->estoque_minimo
             ]);
         } else {
-            // Inserir 
+            
             $stmt = $pdo->prepare(
                 'INSERT INTO produtos (nome, descricao, preco_venda, estoque_atual, estoque_minimo) 
 VALUES (:nome, :descricao, :preco_venda, :estoque_atual, :estoque_minimo)'
@@ -72,5 +72,28 @@ VALUES (:nome, :descricao, :preco_venda, :estoque_atual, :estoque_minimo)'
         $stmt = $pdo->prepare('DELETE FROM produtos WHERE id = :id');
         $stmt->execute(['id' => $id]);
         return $stmt->rowCount() > 0;
+    }
+
+    /**
+     * Tarefa 12: (estoque_atual <= estoque_minimo)
+     * @return int
+     */
+    public function countEstoqueBaixo(): int
+    {
+        
+        $pdo = Database::getConnection(); 
+        
+        
+        
+        
+        $sql = "SELECT COUNT(id) AS total_baixo
+                FROM produtos 
+                WHERE estoque_atual <= estoque_minimo";
+        
+        $stmt = $pdo->query($sql);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        
+        return (int) ($resultado['total_baixo'] ?? 0);
     }
 }
