@@ -63,20 +63,4 @@ class Fornecedor
         $stmt->execute(['id' => $id]);
         return $stmt->rowCount() > 0;
     }
-
-    public static function searchByName($nome)
-    {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare("SELECT * FROM fornecedores WHERE nome LIKE ?");
-        $stmt->execute(['%' . $nome . '%']);
-        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
-        
-    }
-
-    public static function validCnpjExists($cnpjFornecedor) {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare("SELECT COUNT(*) FROM fornecedores WHERE cnpj = :cnpj");
-        $stmt->execute(['cnpj' => $cnpjFornecedor]);
-        return $stmt->fetchColumn();
-    }
 }
