@@ -57,4 +57,7 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute(['GET', 'POST'], '/usuarios/criar', ['App\Controllers\UserController', 'create']);
     $r->addRoute(['GET', 'POST'], '/usuarios/editar/{id:\d+}', ['App\Controllers\UserController', 'edit']);
     $r->addRoute('GET', '/usuarios/delete/{id:\d+}', ['App\Controllers\UserController', 'delete']);
+
+    $r->addRoute('GET', '/lancamento-manual-caixa', ['App\Controllers\LancamentoManualCaixaController', 'index']);
+    $r->addRoute('POST', '/lancamento-manual-caixa/salvar', ['App\Controllers\LancamentoManualCaixaController', 'create']);
 };
