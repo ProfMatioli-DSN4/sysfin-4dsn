@@ -4,7 +4,7 @@ namespace App\Models;
 use App\Core\Database;
 use PDO;
 
-// Nome, Descrição, Preço de Venda e Estoque Inicial
+
 
 class Produto {
 
@@ -36,7 +36,7 @@ class Produto {
     {
         $pdo = Database::getConnection();
         if ($this->id) {
-            // Atualizar 
+            
             $stmt = $pdo->prepare(
                 'UPDATE produtos SET nome = :nome, descricao = :descricao, 
                 preco_venda = :preco_venda, estoque_atual = :estoque_atual, estoque_minimo = :estoque_minimo WHERE id = :id'
@@ -50,7 +50,7 @@ class Produto {
                 'estoque_minimo' => $this->estoque_minimo
             ]);
         } else {
-            // Inserir 
+            
             $stmt = $pdo->prepare(
                 'INSERT INTO produtos (nome, descricao, preco_venda, estoque_atual, estoque_minimo) 
 VALUES (:nome, :descricao, :preco_venda, :estoque_atual, :estoque_minimo)'
