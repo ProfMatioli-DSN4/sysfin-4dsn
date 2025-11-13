@@ -1,15 +1,15 @@
 <?php
 // Retorna uma função que define todas as rotas para o dispatcher
 return function (FastRoute\RouteCollector $r) {
-    //home;
-    $r->addRoute('GET', '/', ['App\Controllers\HomeController', 'index']);
-        
-    //clientes;
-    $r->addRoute('GET', '/clientes', [ 'App\Controllers\ClienteController', 'index']);
-    $r->addRoute(['GET', 'POST'], '/clientes/criar', ['App\Controllers\ClienteController', 'create']);
-    $r->addRoute(['GET', 'POST'], '/clientes/editar/{id:\d+}', ['App\Controllers\ClienteController', 'edit']);
-    $r->addRoute('POST', '/clientes/excluir/{id:\d+}', ['App\Controllers\ClienteController', 'delete']);
-    $r->addRoute('GET', '/clientes/relatorio', ['App\Controllers\ClienteController', 'report']);
+  //home;
+  $r->addRoute('GET', '/', ['App\Controllers\HomeController', 'index']);
+    
+  //clientes;
+  $r->addRoute('GET', '/clientes', [ 'App\Controllers\ClienteController', 'index']);
+  $r->addRoute(['GET', 'POST'], '/clientes/novo', ['App\Controllers\ClienteController', 'create']);
+  $r->addRoute(['GET', 'POST'], '/clientes/editar/{id:\d+}', ['App\Controllers\ClienteController', 'edit']);
+  $r->addRoute('GET', '/clientes/excluir/{id:\d+}', ['App\Controllers\ClienteController', 'delete']);
+  $r->addRoute('GET', '/relatorio-cliente', ['App\Controllers\ClienteController', 'report']);
 
   //fornecedores;
   $r->addRoute('GET', '/fornecedores', ['App\Controllers\FornecedorController', 'index']);

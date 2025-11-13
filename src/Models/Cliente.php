@@ -3,6 +3,7 @@
 namespace App\Models;
 use App\Core\Database;
 use PDO;
+
 class Cliente
 {
     public $id;
@@ -10,12 +11,14 @@ class Cliente
     public $cpf_cnpj;
     public $email;
     public $telefone;
+
     public static function getAll()
     {
         $pdo = Database::getConnection();
         $stmt = $pdo->query('SELECT * FROM clientes ORDER BY nome');
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+    
     public static function getById($id)
     {
         $pdo = Database::getConnection();
@@ -29,8 +32,7 @@ class Cliente
         if ($this->id) {
             // Atualizar 
             $stmt = $pdo->prepare(
-                'UPDATE clientes SET nome = :nome, cpf_cnpj = :cpf_cnpj, 
-email = :email, telefone = :telefone WHERE id = :id'
+                'UPDATE clientes SET nome = :nome, cpf_cnpj = :cpf_cnpj, email = :email, telefone = :telefone WHERE id = :id'
             );
             $stmt->execute([
                 'id' => $this->id,
@@ -56,10 +58,18 @@ VALUES (:nome, :cpf_cnpj, :email, :telefone)'
         return $stmt->rowCount() > 0;
     }
     public static function delete($id)
-    {
+    { //deletar
         $pdo = Database::getConnection();
         $stmt = $pdo->prepare('DELETE FROM clientes WHERE id = :id');
         $stmt->execute(['id' => $id]);
         return $stmt->rowCount() > 0;
+    }   
+
+    public static function searchByName($nome)
+    {//pesquisar
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare('SELECT * FROM clientes WHERE nome LIKE :nome ORDER BY nome');
+        $stmt->execute(['nome' => '%' . $nome . '%']);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 }
