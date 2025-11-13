@@ -3,7 +3,7 @@
 return function (FastRoute\RouteCollector $r) {
     //home;
     $r->addRoute('GET', '/', ['App\Controllers\HomeController', 'index']);
-        
+
     //clientes;
     $r->addRoute('GET', '/clientes', [ 'App\Controllers\ClienteController', 'index']);
     $r->addRoute(['GET', 'POST'], '/clientes/criar', ['App\Controllers\ClienteController', 'create']);
@@ -18,12 +18,13 @@ return function (FastRoute\RouteCollector $r) {
   $r->addRoute('GET', '/fornecedores/excluir/{id:\d+}', ['App\Controllers\FornecedorController', 'delete']);
   $r->addRoute('GET', '/fornecedores/relatorio', ['App\Controllers\FornecedorController', 'report']);
 
-        //plano de contas;
-    $r->addRoute('GET', '/plano-contas', [ 'App\Controllers\PlanoContaController', 'index']);
-    $r->addRoute(['GET', 'POST'], '/plano-contas/criar', ['App\Controllers\PlanoContaController', 'create']);
-    $r->addRoute(['GET', 'POST'], '/plano-contas/editar/{id:\d+}', ['App\Controllers\PlanoContaController', 'edit']);
-    $r->addRoute('POST', '/plano-contas/excluir/{id:\d+}', ['App\Controllers\PlanoContaController', 'delete']);
-    $r->addRoute('GET', '/plano-contas/relatorio', ['App\Controllers\PlanoContaController', 'report']);
+    //plano de contas;
+    // CORRIGIDO: PlanoContaController -> PlanoContasController
+    $r->addRoute('GET', '/plano-contas', [ 'App\Controllers\PlanoContasController', 'index']);
+    $r->addRoute(['GET', 'POST'], '/plano-contas/criar', ['App\Controllers\PlanoContasController', 'create']);
+    $r->addRoute(['GET', 'POST'], '/plano-contas/editar/{id:\d+}', ['App\Controllers\PlanoContasController', 'edit']);
+    $r->addRoute('POST', '/plano-contas/excluir/{id:\d+}', ['App\Controllers\PlanoContasController', 'delete']);
+    $r->addRoute('GET', '/plano-contas/relatorio', ['App\Controllers\PlanoContasController', 'report']);
 
     //compras
     $r->addRoute(['GET', 'POST'], '/compras', ['App\Controllers\CompraController', 'index']);
@@ -42,7 +43,7 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute(['GET', 'POST'], '/vendas/create', ['App\Controllers\VendaController', 'create']);
     $r->addRoute('GET', '/vendas/details/{id:\d+}', ['App\Controllers\VendaController', 'details']);
     $r->addRoute('GET', '/vendas/relatorio', ['App\Controllers\VendaController', 'report']);
-  
+
     // Estoque
     $r->addRoute('GET', '/relatorio-estoque', ['App\Controllers\RelatorioEstoqueController', 'index']);
 
@@ -57,7 +58,4 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute(['GET', 'POST'], '/usuarios/criar', ['App\Controllers\UserController', 'create']);
     $r->addRoute(['GET', 'POST'], '/usuarios/editar/{id:\d+}', ['App\Controllers\UserController', 'edit']);
     $r->addRoute('GET', '/usuarios/delete/{id:\d+}', ['App\Controllers\UserController', 'delete']);
-
-    $r->addRoute('GET', '/lancamento-manual-caixa', ['App\Controllers\LancamentoManualCaixaController', 'index']);
-    $r->addRoute('POST', '/lancamento-manual-caixa/salvar', ['App\Controllers\LancamentoManualCaixaController', 'create']);
 };
