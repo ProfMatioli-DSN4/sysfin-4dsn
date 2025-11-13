@@ -11,16 +11,30 @@ $actionUrl = $isEdit ? BASE_URL . "/plano-contas/editar/{$conta->id}" : BASE_URL
         <input type="hidden" name="id" value="<?= htmlspecialchars($conta->id) ?>">
     <?php endif; ?>
     
-    <label for="descricao">Descrição:</label>
-    <input type="text" id="descricao" name="descricao" 
-           value="<?= htmlspecialchars($conta->descricao ?? '') ?>" required><br><br>
+    <div class="mb-3">
+        <label for="descricao" class="form-label">Descrição:</label>
+        <input 
+            type="text" 
+            id="descricao" 
+            name="descricao" 
+            class="form-control" 
+            value="<?= htmlspecialchars($conta->descricao ?? '') ?>" 
+            required
+        >
+    </div>
 
-    <label for="tipo">Tipo:</label>
-    <select id="tipo" name="tipo" required>
-        <option value="Receita" <?= ($conta->tipo ?? '') === 'Receita' ? 'selected' : '' ?>>Receita</option>
-        <option value="Despesa" <?= ($conta->tipo ?? '') === 'Despesa' ? 'selected' : '' ?>>Despesa</option>
-    </select><br><br>
+    <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo:</label>
+        <select id="tipo" name="tipo" class="form-select" required>
+            <option value="R" <?= ($conta->tipo ?? '') === 'R' ? 'selected' : '' ?>>Receita</option>
+            <option value="D" <?= ($conta->tipo ?? '') === 'D' ? 'selected' : '' ?>>Despesa</option>
+        </select>
+    </div>
 
-    <button type="submit"><?= $isEdit ? 'Salvar Edição' : 'Cadastrar Conta' ?></button>
-    <a href="<?= BASE_URL ?>/plano-contas">Voltar para a Lista</a>
+    <button type="submit" class="btn btn-primary">
+        <?= $isEdit ? 'Salvar Edição' : 'Cadastrar Conta' ?>
+    </button>
+    <a href="<?= BASE_URL ?>/plano-contas" class="btn btn-secondary">
+        Voltar para a Lista
+    </a>
 </form>
