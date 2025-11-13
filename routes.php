@@ -11,12 +11,12 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('POST', '/clientes/excluir/{id:\d+}', ['App\Controllers\ClienteController', 'delete']);
     $r->addRoute('GET', '/clientes/relatorio', ['App\Controllers\ClienteController', 'report']);
 
-    //fornecedores;
-    $r->addRoute('GET', '/fornecedores', ['App\Controllers\FornecedorController', 'index']);
-    $r->addRoute(['GET', 'POST'], '/fornecedores/criar', ['App\Controllers\FornecedorController', 'create']);
-    $r->addRoute(['GET', 'POST'], '/fornecedores/editar/{id:\d+}', ['App\Controllers\FornecedorController', 'edit']);
-    $r->addRoute('POST', '/fornecedores/excluir/{id:\d+}', ['App\Controllers\FornecedorController', 'delete']);
-    $r->addRoute('GET', '/fornecedores/relatorio', ['App\Controllers\FornecedorController', 'report']);
+  //fornecedores;
+  $r->addRoute('GET', '/fornecedores', ['App\Controllers\FornecedorController', 'index']);
+  $r->addRoute(['GET', 'POST'], '/fornecedores/criar', ['App\Controllers\FornecedorController', 'create']);
+  $r->addRoute(['GET', 'POST'], '/fornecedores/editar/{id:\d+}', ['App\Controllers\FornecedorController', 'edit']);
+  $r->addRoute('GET', '/fornecedores/excluir/{id:\d+}', ['App\Controllers\FornecedorController', 'delete']);
+  $r->addRoute('GET', '/fornecedores/relatorio', ['App\Controllers\FornecedorController', 'report']);
 
     //plano de contas;
     // CORRIGIDO: PlanoContaController -> PlanoContasController
@@ -27,8 +27,8 @@ return function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/plano-contas/relatorio', ['App\Controllers\PlanoContasController', 'report']);
 
     //compras
-    $r->addRoute(['GET', 'POST'], '/compras', ['App\Controllers\CompraController', 'report']);
-    $r->addRoute(['GET', 'POST'], '/compras/registrar', ['App\Controllers\CompraController', 'registrar']);
+    $r->addRoute(['GET', 'POST'], '/compras', ['App\Controllers\CompraController', 'index']);
+    $r->addRoute(['GET', 'POST'], '/compras/registrar', ['App\Controllers\CompraController', 'create']);
     $r->addRoute(['GET', 'POST'], '/compras/relatorio', ['App\Controllers\CompraController', 'report']);
 
     //produtos; essa é a parte de produtos
